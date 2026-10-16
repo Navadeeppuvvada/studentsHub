@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attendance | StudentHub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+  <script src="js/attendance.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" data-sidebar></aside>
+  <div class="main-area">
+    <header class="topbar">
+      <span class="topbar-title">Academic workspace / Attendance</span>
+      <a class="avatar" href="profile.html" aria-label="My profile">N</a>
+    </header>
+
+    <main class="page-content">
+      <section class="page-header">
+        <div>
+          <h1>Attendance</h1>
+          <p class="page-subtitle">Track class participation and understand where you stand in each subject.</p>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Attendance summary">
+        <article class="stat-card">
+          <span class="stat-label">Overall attendance</span>
+          <p class="stat-value" id="overall">--%</p>
+          <span class="stat-label">Across listed subjects</span>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Classes attended</span>
+          <p class="stat-value" id="attended-total">--</p>
+          <span class="stat-label">Recorded present</span>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Classes conducted</span>
+          <p class="stat-value" id="held-total">--</p>
+          <span class="stat-label">Total recorded</span>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Below 75%</span>
+          <p class="stat-value" id="low-count">--</p>
+          <span class="stat-label">Illustrative target</span>
+        </article>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <h2>Subject-wise attendance</h2>
+            <p class="page-subtitle">Edit the counts to test different scenarios.</p>
+          </div>
+          <button class="btn btn-secondary" id="reset-attendance">Reset demo data</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Subject</th>
+                <th scope="col">Attended</th>
+                <th scope="col">Conducted</th>
+                <th scope="col">Percentage</th>
+                <th scope="col">Progress</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody id="attendance-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top:24px">
+        <h2>Attendance calculator</h2>
+        <p>Estimate how many consecutive classes you would need to attend to reach 75%.</p>
+        <div class="content-grid">
+          <div class="form-group">
+            <label for="calc-attended">Classes attended</label>
+            <input class="form-control" id="calc-attended" type="number" min="0" value="34">
+          </div>
+          <div class="form-group">
+            <label for="calc-held">Classes conducted</label>
+            <input class="form-control" id="calc-held" type="number" min="0" value="40">
+          </div>
+        </div>
+        <button class="btn btn-primary" id="calculate">Calculate</button>
+        <p id="calc-result" role="status" style="margin-top:18px">Enter your class counts to calculate.</p>
+      </section>
+
+      <p class="page-subtitle" style="margin-top:20px">
+        Sample data only. Your university's attendance rules may differ; verify official records before making decisions.
+      </p>
+    </main>
+  </div>
+</div>
+</body>
+</html>

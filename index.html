@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0B1020">
+  <title>Dashboard | StudentHub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" data-sidebar></aside>
+    <div class="main-area">
+      <header class="topbar">
+        <span class="topbar-title">Your academic space</span>
+        <div class="topbar-actions">
+          <a class="btn btn-ghost" href="notifications.html">Notifications</a>
+          <a class="avatar" href="profile.html" aria-label="My profile">N</a>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <section class="page-header">
+          <div>
+            <p class="nav-label" style="margin-left:0">FRIDAY, <span data-current-date></span></p>
+            <h1>Welcome back, Navadeep</h1>
+            <p class="page-subtitle">Here's what's happening with your studies today.</p>
+          </div>
+          <a class="btn btn-primary" href="study-materials.html">Explore materials ↗</a>
+        </section>
+
+        <section class="stats-grid" aria-label="Academic summary">
+          <article class="stat-card">
+            <div class="icon-tile">▤</div>
+            <p class="stat-value">06</p>
+            <div class="stat-label">Active subjects</div>
+          </article>
+          <article class="stat-card">
+            <div class="icon-tile">%</div>
+            <p class="stat-value">85%</p>
+            <div class="stat-label">Overall attendance</div>
+          </article>
+          <article class="stat-card">
+            <div class="icon-tile">✓</div>
+            <p class="stat-value" id="dashboard-pending">02</p>
+            <div class="stat-label">Pending assignments</div>
+          </article>
+          <article class="stat-card">
+            <div class="icon-tile">▦</div>
+            <p class="stat-value">03</p>
+            <div class="stat-label">Classes today</div>
+          </article>
+        </section>
+
+        <div class="content-grid">
+          <section class="card">
+            <div class="card-header">
+              <h2>Today's schedule</h2>
+              <a href="timetable.html" style="color:#A5B4FC">View timetable →</a>
+            </div>
+            <div class="list-stack">
+              <div class="list-item">
+                <div class="icon-tile">09</div>
+                <div class="item-main">
+                  <strong>Data Structures</strong>
+                  <p>09:00–10:00 AM · Lecture hall</p>
+                </div>
+                <span class="badge badge-info">Class</span>
+              </div>
+              <div class="list-item">
+                <div class="icon-tile">11</div>
+                <div class="item-main">
+                  <strong>Engineering Mathematics</strong>
+                  <p>11:00 AM–12:00 PM · Room 204</p>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="icon-tile">02</div>
+                <div class="item-main">
+                  <strong>AI/ML Laboratory</strong>
+                  <p>02:00–04:00 PM · Computer lab</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-header">
+              <h2>Upcoming deadlines</h2>
+              <a href="assignments.html" style="color:#A5B4FC">View all →</a>
+            </div>
+            <div class="list-stack">
+              <div class="list-item">
+                <div class="icon-tile">DS</div>
+                <div class="item-main">
+                  <strong>BST exercises</strong>
+                  <p>Data Structures · 20 Oct</p>
+                </div>
+                <span class="badge badge-warning">Pending</span>
+              </div>
+              <div class="list-item">
+                <div class="icon-tile">MA</div>
+                <div class="item-main">
+                  <strong>Probability worksheet</strong>
+                  <p>Mathematics · 22 Oct</p>
+                </div>
+                <span class="badge badge-warning">Pending</span>
+              </div>
+              <div class="list-item">
+                <div class="icon-tile">AI</div>
+                <div class="item-main">
+                  <strong>Classification report</strong>
+                  <p>AI/ML · 15 Oct</p>
+                </div>
+                <span class="badge badge-success">Submitted</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-header">
+              <h2>Attendance overview</h2>
+              <a href="attendance.html" style="color:#A5B4FC">Details →</a>
+            </div>
+            <p>Overall attendance</p>
+            <div class="progress-track">
+              <div class="progress-fill success" style="width:85%"></div>
+            </div>
+            <p style="margin-top:12px">85% <span style="color:#34D399">· Demo value</span></p>
+            <p>Check subject-wise attendance to identify classes that need attention.</p>
+          </section>
+
+          <section class="card">
+            <div class="card-header">
+              <h2>Quick access</h2>
+            </div>
+            <div class="list-stack">
+              <a class="list-item" href="study-materials.html">
+                <div class="icon-tile">▤</div>
+                <div class="item-main">
+                  <strong>Study materials</strong>
+                  <p>Find notes, PDFs and resources.</p>
+                </div>
+              </a>
+              <a class="list-item" href="notifications.html">
+                <div class="icon-tile">♧</div>
+                <div class="item-main">
+                  <strong>Notifications</strong>
+                  <p>Review important academic updates.</p>
+                </div>
+              </a>
+            </div>
+          </section>
+        </div>
+
+        <p class="page-subtitle" style="margin-top:24px">
+          Demo dashboard · Replace sample figures and schedules with your real academic data.
+        </p>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
