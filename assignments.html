@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0B1020">
+  <title>Assignments | StudentHub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+  <script src="js/assignments.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" data-sidebar></aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <span class="topbar-title">Academic workspace / Assignments</span>
+        <a class="btn btn-secondary" href="notifications.html">
+          Notifications
+        </a>
+      </header>
+
+      <main class="page-content">
+        <section class="page-header">
+          <div>
+            <h1>Assignments</h1>
+            <p class="page-subtitle">
+              Track deadlines, submissions and academic progress.
+            </p>
+          </div>
+          <button class="btn btn-primary" id="add-assignment">
+            + Add assignment
+          </button>
+        </section>
+
+        <section class="stats-grid" aria-label="Assignment summary">
+          <article class="stat-card">
+            <span class="stat-label">Total assignments</span>
+            <p class="stat-value" id="total-count">0</p>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Pending</span>
+            <p class="stat-value" id="pending-count">0</p>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Completed</span>
+            <p class="stat-value" id="completed-count">0</p>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Overdue</span>
+            <p class="stat-value" id="overdue-count">0</p>
+          </article>
+        </section>
+
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <h2>All assignments</h2>
+              <p class="page-subtitle">
+                Filter coursework by status.
+              </p>
+            </div>
+
+            <select class="form-control" id="status-filter"
+                    aria-label="Filter assignments">
+              <option value="all">All assignments</option>
+              <option value="pending">Pending</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Assignment</th>
+                  <th>Subject</th>
+                  <th>Due date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="assignment-list"></tbody>
+            </table>
+          </div>
+
+          <p class="empty-state" id="empty-state" hidden>
+            No assignments match this filter.
+          </p>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
