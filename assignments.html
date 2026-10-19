@@ -1,97 +1,140 @@
 
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0B1020">
-  <title>Assignments | StudentHub</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/app.js" defer></script>
-  <script src="js/assignments.js" defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b1020">
+
+    <title>Assignments | StudentHub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/app.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/assignments.js" defer></script>
 </head>
+
 <body>
-  <div class="app-shell">
-    <aside class="sidebar" data-sidebar></aside>
+    <div class="app-shell">
+        <aside class="sidebar" data-sidebar></aside>
 
-    <div class="main-area">
-      <header class="topbar">
-        <span class="topbar-title">Academic workspace / Assignments</span>
-        <a class="btn btn-secondary" href="notifications.html">
-          Notifications
-        </a>
-      </header>
+        <div class="main-area">
+            <header class="topbar">
+                <button
+                    class="icon-button mobile-menu"
+                    data-mobile-menu
+                    aria-label="Open navigation"
+                >
+                    ☰
+                </button>
 
-      <main class="page-content">
-        <section class="page-header">
-          <div>
-            <h1>Assignments</h1>
-            <p class="page-subtitle">
-              Track deadlines, submissions and academic progress.
-            </p>
-          </div>
-          <button class="btn btn-primary" id="add-assignment">
-            + Add assignment
-          </button>
-        </section>
+                <span class="topbar-title">
+                    Your academic space
+                </span>
 
-        <section class="stats-grid" aria-label="Assignment summary">
-          <article class="stat-card">
-            <span class="stat-label">Total assignments</span>
-            <p class="stat-value" id="total-count">0</p>
-          </article>
-          <article class="stat-card">
-            <span class="stat-label">Pending</span>
-            <p class="stat-value" id="pending-count">0</p>
-          </article>
-          <article class="stat-card">
-            <span class="stat-label">Completed</span>
-            <p class="stat-value" id="completed-count">0</p>
-          </article>
-          <article class="stat-card">
-            <span class="stat-label">Overdue</span>
-            <p class="stat-value" id="overdue-count">0</p>
-          </article>
-        </section>
+                <div class="topbar-actions">
+                    <button
+                        class="theme-toggle"
+                        data-theme-toggle
+                        type="button"
+                        aria-label="Switch theme"
+                    ></button>
 
-        <section class="card">
-          <div class="card-header">
-            <div>
-              <h2>All assignments</h2>
-              <p class="page-subtitle">
-                Filter coursework by status.
-              </p>
-            </div>
+                    <a class="btn btn-quiet" href="notifications.html">
+                        Notifications
+                    </a>
 
-            <select class="form-control" id="status-filter"
-                    aria-label="Filter assignments">
-              <option value="all">All assignments</option>
-              <option value="pending">Pending</option>
-              <option value="completed">Completed</option>
-            </select>
-          </div>
+                    <a
+                        class="avatar"
+                        href="profile.html"
+                        aria-label="My profile"
+                    >
+                        N
+                    </a>
+                </div>
+            </header>
 
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Assignment</th>
-                  <th>Subject</th>
-                  <th>Due date</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody id="assignment-list"></tbody>
-            </table>
-          </div>
+            <main class="page-content">
+                <div class="page-heading">
+                    <div>
+                        <span class="eyebrow">ACADEMIC</span>
 
-          <p class="empty-state" id="empty-state" hidden>
-            No assignments match this filter.
-          </p>
-        </section>
-      </main>
+                        <h1>Assignments</h1>
+
+                        <p>
+                            Break down your work and stay ahead of deadlines.
+                        </p>
+                    </div>
+
+                    <button class="btn btn-primary" id="add-assignment">
+                        + Add assignment
+                    </button>
+                </div>
+
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <div class="stat-top">Total tasks</div>
+                        <div class="stat-value" id="total-count">04</div>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">Pending</div>
+                        <div class="stat-value" id="pending-count">03</div>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">Completed</div>
+                        <div class="stat-value" id="completed-count">01</div>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">Next deadline</div>
+                        <div class="stat-value" style="font-size:21px">
+                            20 Oct
+                        </div>
+                    </article>
+                </div>
+
+                <div class="toolbar">
+                    <input
+                        class="field"
+                        id="assignment-search"
+                        placeholder="Search assignments..."
+                    >
+
+                    <select class="select" id="assignment-filter">
+                        <option value="all">All statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="done">Completed</option>
+                    </select>
+                </div>
+
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Assignment</th>
+                                <th>Subject</th>
+                                <th>Due date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="assignment-rows"></tbody>
+                    </table>
+                </div>
+
+                <p class="footer-note">
+                    StudentHub · Your academic space ·
+                    <span data-year></span>
+                    · Demo data is stored in this browser only.
+                </p>
+            </main>
+        </div>
     </div>
-  </div>
 </body>
+
 </html>

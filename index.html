@@ -1,166 +1,333 @@
 
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0B1020">
-  <title>Dashboard | StudentHub</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/app.js" defer></script>
-  <script src="js/dashboard.js" defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b1020">
+
+    <title>Dashboard | StudentHub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/app.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/dashboard.js" defer></script>
 </head>
+
 <body>
-  <div class="app-shell">
-    <aside class="sidebar" data-sidebar></aside>
-    <div class="main-area">
-      <header class="topbar">
-        <span class="topbar-title">Your academic space</span>
-        <div class="topbar-actions">
-          <a class="btn btn-ghost" href="notifications.html">Notifications</a>
-          <a class="avatar" href="profile.html" aria-label="My profile">N</a>
+    <div class="app-shell">
+        <aside class="sidebar" data-sidebar></aside>
+
+        <div class="main-area">
+            <header class="topbar">
+                <button
+                    class="icon-button mobile-menu"
+                    data-mobile-menu
+                    aria-label="Open navigation"
+                >
+                    ☰
+                </button>
+
+                <span class="topbar-title">
+                    Your academic space
+                </span>
+
+                <div class="topbar-actions">
+                    <button
+                        class="theme-toggle"
+                        data-theme-toggle
+                        type="button"
+                        aria-label="Switch theme"
+                    ></button>
+
+                    <a class="btn btn-quiet" href="notifications.html">
+                        Notifications
+                    </a>
+
+                    <a
+                        class="avatar"
+                        href="profile.html"
+                        aria-label="My profile"
+                    >
+                        N
+                    </a>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <section class="hero">
+                    <div>
+                        <span class="eyebrow">
+                            YOUR SEMESTER, IN ONE PLACE
+                        </span>
+
+                        <h1>
+                            Make every study session
+                            <span class="gradient-text">count.</span>
+                        </h1>
+
+                        <p>
+                            Welcome back, Navadeep. Keep track of classes,
+                            assignments and your next big academic goal—all
+                            from one calm workspace.
+                        </p>
+
+                        <div class="toolbar" style="margin-top:22px">
+                            <a class="btn btn-primary" href="study-planner.html">
+                                Plan my study ↗
+                            </a>
+
+                            <a class="btn btn-secondary" href="study-materials.html">
+                                Explore materials
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero-art">
+                        <div class="orb">🎓</div>
+
+                        <div class="float-card float-one">
+                            <strong>85%</strong>
+                            <span>Attendance average</span>
+                        </div>
+
+                        <div class="float-card float-two">
+                            <strong>✨ On track</strong>
+                            <span>Your week at a glance</span>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            Active subjects
+                            <span class="stat-icon">▦</span>
+                        </div>
+
+                        <div class="stat-value">06</div>
+                        <div class="stat-note">Across this semester</div>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            Attendance
+                            <span class="stat-icon">✓</span>
+                        </div>
+
+                        <div class="stat-value">85%</div>
+
+                        <div class="progress">
+                            <span data-progress="85"></span>
+                        </div>
+
+                        <div class="stat-note">
+                            10% above the 75% target
+                        </div>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            Pending work
+                            <span class="stat-icon">▤</span>
+                        </div>
+
+                        <div class="stat-value" id="pending-total">02</div>
+
+                        <div class="stat-note">
+                            Keep an eye on due dates
+                        </div>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            Study streak
+                            <span class="stat-icon">✦</span>
+                        </div>
+
+                        <div class="stat-value">4 days</div>
+
+                        <div class="stat-note">
+                            A little progress adds up
+                        </div>
+                    </article>
+                </div>
+
+                <div class="content-grid">
+                    <section class="card">
+                        <div class="card-header">
+                            <h2>Coming up next</h2>
+                            <a href="timetable.html">Full timetable →</a>
+                        </div>
+
+                        <div class="stack">
+                            <div class="list-row">
+                                <span class="list-icon">09</span>
+
+                                <div class="list-main">
+                                    <strong>Data Structures</strong>
+                                    <small>09:00–10:00 · Lecture hall</small>
+                                </div>
+
+                                <span class="pill">Class</span>
+                            </div>
+
+                            <div class="list-row">
+                                <span class="list-icon">11</span>
+
+                                <div class="list-main">
+                                    <strong>Engineering Mathematics</strong>
+                                    <small>11:00–12:00 · Room 204</small>
+                                </div>
+                            </div>
+
+                            <div class="list-row">
+                                <span class="list-icon">14</span>
+
+                                <div class="list-main">
+                                    <strong>AI/ML Laboratory</strong>
+                                    <small>14:00–16:00 · Computer lab</small>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="card">
+                        <div class="card-header">
+                            <h2>Assignment deadlines</h2>
+                            <a href="assignments.html">View all →</a>
+                        </div>
+
+                        <div class="stack">
+                            <div class="list-row">
+                                <span class="list-icon">DS</span>
+
+                                <div class="list-main">
+                                    <strong>BST practice set</strong>
+                                    <small>Data Structures · 20 Oct</small>
+                                </div>
+
+                                <span class="pill warn">Pending</span>
+                            </div>
+
+                            <div class="list-row">
+                                <span class="list-icon">MA</span>
+
+                                <div class="list-main">
+                                    <strong>Probability worksheet</strong>
+                                    <small>Mathematics · 22 Oct</small>
+                                </div>
+
+                                <span class="pill warn">Pending</span>
+                            </div>
+
+                            <div class="list-row">
+                                <span class="list-icon">AI</span>
+
+                                <div class="list-main">
+                                    <strong>Classification report</strong>
+                                    <small>AI/ML · Submitted</small>
+                                </div>
+
+                                <span class="pill good">Done</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="card">
+                        <div class="card-header">
+                            <h2>Your learning progress</h2>
+                            <a href="subjects.html">Subjects →</a>
+                        </div>
+
+                        <div class="stack">
+                            <div class="list-row">
+                                <div class="list-main">
+                                    <strong>Java Programming</strong>
+                                    <small>Course progress · 78%</small>
+
+                                    <div class="progress">
+                                        <span data-progress="78"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="list-row">
+                                <div class="list-main">
+                                    <strong>Data Structures</strong>
+                                    <small>Course progress · 65%</small>
+
+                                    <div class="progress">
+                                        <span data-progress="65"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="list-row">
+                                <div class="list-main">
+                                    <strong>Web Development</strong>
+                                    <small>Course progress · 82%</small>
+
+                                    <div class="progress">
+                                        <span data-progress="82"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="card">
+                        <div class="card-header">
+                            <h2>Quick actions</h2>
+                        </div>
+
+                        <div class="stack">
+                            <a class="list-row" href="study-planner.html">
+                                <span class="list-icon">◷</span>
+
+                                <div class="list-main">
+                                    <strong>Build a study plan</strong>
+                                    <small>Turn goals into focused sessions</small>
+                                </div>
+
+                                <span>↗</span>
+                            </a>
+
+                            <a class="list-row" href="study-materials.html">
+                                <span class="list-icon">▧</span>
+
+                                <div class="list-main">
+                                    <strong>Find study materials</strong>
+                                    <small>Notes, references and useful links</small>
+                                </div>
+
+                                <span>↗</span>
+                            </a>
+
+                            <a class="list-row" href="events-clubs.html">
+                                <span class="list-icon">✳</span>
+
+                                <div class="list-main">
+                                    <strong>Explore campus life</strong>
+                                    <small>Events, clubs and opportunities</small>
+                                </div>
+
+                                <span>↗</span>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+
+                <p class="footer-note">
+                    StudentHub · Your academic space ·
+                    <span data-year></span>
+                    · Demo data is stored in this browser only.
+                </p>
+            </main>
         </div>
-      </header>
-
-      <main class="page-content">
-        <section class="page-header">
-          <div>
-            <p class="nav-label" style="margin-left:0">FRIDAY, <span data-current-date></span></p>
-            <h1>Welcome back, Navadeep</h1>
-            <p class="page-subtitle">Here's what's happening with your studies today.</p>
-          </div>
-          <a class="btn btn-primary" href="study-materials.html">Explore materials ↗</a>
-        </section>
-
-        <section class="stats-grid" aria-label="Academic summary">
-          <article class="stat-card">
-            <div class="icon-tile">▤</div>
-            <p class="stat-value">06</p>
-            <div class="stat-label">Active subjects</div>
-          </article>
-          <article class="stat-card">
-            <div class="icon-tile">%</div>
-            <p class="stat-value">85%</p>
-            <div class="stat-label">Overall attendance</div>
-          </article>
-          <article class="stat-card">
-            <div class="icon-tile">✓</div>
-            <p class="stat-value" id="dashboard-pending">02</p>
-            <div class="stat-label">Pending assignments</div>
-          </article>
-          <article class="stat-card">
-            <div class="icon-tile">▦</div>
-            <p class="stat-value">03</p>
-            <div class="stat-label">Classes today</div>
-          </article>
-        </section>
-
-        <div class="content-grid">
-          <section class="card">
-            <div class="card-header">
-              <h2>Today's schedule</h2>
-              <a href="timetable.html" style="color:#A5B4FC">View timetable →</a>
-            </div>
-            <div class="list-stack">
-              <div class="list-item">
-                <div class="icon-tile">09</div>
-                <div class="item-main">
-                  <strong>Data Structures</strong>
-                  <p>09:00–10:00 AM · Lecture hall</p>
-                </div>
-                <span class="badge badge-info">Class</span>
-              </div>
-              <div class="list-item">
-                <div class="icon-tile">11</div>
-                <div class="item-main">
-                  <strong>Engineering Mathematics</strong>
-                  <p>11:00 AM–12:00 PM · Room 204</p>
-                </div>
-              </div>
-              <div class="list-item">
-                <div class="icon-tile">02</div>
-                <div class="item-main">
-                  <strong>AI/ML Laboratory</strong>
-                  <p>02:00–04:00 PM · Computer lab</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section class="card">
-            <div class="card-header">
-              <h2>Upcoming deadlines</h2>
-              <a href="assignments.html" style="color:#A5B4FC">View all →</a>
-            </div>
-            <div class="list-stack">
-              <div class="list-item">
-                <div class="icon-tile">DS</div>
-                <div class="item-main">
-                  <strong>BST exercises</strong>
-                  <p>Data Structures · 20 Oct</p>
-                </div>
-                <span class="badge badge-warning">Pending</span>
-              </div>
-              <div class="list-item">
-                <div class="icon-tile">MA</div>
-                <div class="item-main">
-                  <strong>Probability worksheet</strong>
-                  <p>Mathematics · 22 Oct</p>
-                </div>
-                <span class="badge badge-warning">Pending</span>
-              </div>
-              <div class="list-item">
-                <div class="icon-tile">AI</div>
-                <div class="item-main">
-                  <strong>Classification report</strong>
-                  <p>AI/ML · 15 Oct</p>
-                </div>
-                <span class="badge badge-success">Submitted</span>
-              </div>
-            </div>
-          </section>
-
-          <section class="card">
-            <div class="card-header">
-              <h2>Attendance overview</h2>
-              <a href="attendance.html" style="color:#A5B4FC">Details →</a>
-            </div>
-            <p>Overall attendance</p>
-            <div class="progress-track">
-              <div class="progress-fill success" style="width:85%"></div>
-            </div>
-            <p style="margin-top:12px">85% <span style="color:#34D399">· Demo value</span></p>
-            <p>Check subject-wise attendance to identify classes that need attention.</p>
-          </section>
-
-          <section class="card">
-            <div class="card-header">
-              <h2>Quick access</h2>
-            </div>
-            <div class="list-stack">
-              <a class="list-item" href="study-materials.html">
-                <div class="icon-tile">▤</div>
-                <div class="item-main">
-                  <strong>Study materials</strong>
-                  <p>Find notes, PDFs and resources.</p>
-                </div>
-              </a>
-              <a class="list-item" href="notifications.html">
-                <div class="icon-tile">♧</div>
-                <div class="item-main">
-                  <strong>Notifications</strong>
-                  <p>Review important academic updates.</p>
-                </div>
-              </a>
-            </div>
-          </section>
-        </div>
-
-        <p class="page-subtitle" style="margin-top:24px">
-          Demo dashboard · Replace sample figures and schedules with your real academic data.
-        </p>
-      </main>
     </div>
-  </div>
 </body>
+
 </html>

@@ -1,85 +1,106 @@
 
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Timetable | StudentHub</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/app.js" defer></script>
-  <script src="js/timetable.js" defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b1020">
+
+    <title>Timetable | StudentHub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/app.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/timetable.js" defer></script>
 </head>
+
 <body>
-<div class="app-shell">
-  <aside class="sidebar" data-sidebar></aside>
-  <div class="main-area">
-    <header class="topbar">
-      <span class="topbar-title">Academic workspace / Timetable</span>
-      <a class="avatar" href="profile.html" aria-label="My profile">N</a>
-    </header>
+    <div class="app-shell">
+        <aside class="sidebar" data-sidebar></aside>
 
-    <main class="page-content">
-      <section class="page-header">
-        <div>
-          <h1>Class timetable</h1>
-          <p class="page-subtitle">Plan your week and see what's scheduled each day.</p>
+        <div class="main-area">
+            <header class="topbar">
+                <button
+                    class="icon-button mobile-menu"
+                    data-mobile-menu
+                    aria-label="Open navigation"
+                >
+                    ☰
+                </button>
+
+                <span class="topbar-title">
+                    Your academic space
+                </span>
+
+                <div class="topbar-actions">
+                    <button
+                        class="theme-toggle"
+                        data-theme-toggle
+                        type="button"
+                        aria-label="Switch theme"
+                    ></button>
+
+                    <a class="btn btn-quiet" href="notifications.html">
+                        Notifications
+                    </a>
+
+                    <a
+                        class="avatar"
+                        href="profile.html"
+                        aria-label="My profile"
+                    >
+                        N
+                    </a>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <div class="page-heading">
+                    <div>
+                        <span class="eyebrow">ACADEMIC</span>
+
+                        <h1>Timetable</h1>
+
+                        <p>
+                            A clear view of your classes, labs and study blocks.
+                        </p>
+                    </div>
+
+                    <button class="btn btn-secondary" id="today-btn">
+                        Today
+                    </button>
+                </div>
+
+                <div
+                    class="toolbar"
+                    id="day-tabs"
+                ></div>
+
+                <section class="card">
+                    <div class="card-header">
+                        <h2 id="day-title">Monday schedule</h2>
+
+                        <span class="pill">
+                            Semester timetable · Demo
+                        </span>
+                    </div>
+
+                    <div
+                        class="stack"
+                        id="class-list"
+                    ></div>
+                </section>
+
+                <p class="footer-note">
+                    StudentHub · Your academic space ·
+                    <span data-year></span>
+                    · Demo data is stored in this browser only.
+                </p>
+            </main>
         </div>
-        <span class="badge badge-info">Demo schedule</span>
-      </section>
-
-      <section class="stats-grid">
-        <article class="stat-card">
-          <span class="stat-label">Selected day</span>
-          <p class="stat-value" id="selected-day-name">Monday</p>
-        </article>
-        <article class="stat-card">
-          <span class="stat-label">Classes scheduled</span>
-          <p class="stat-value" id="class-count">0</p>
-        </article>
-        <article class="stat-card">
-          <span class="stat-label">First class</span>
-          <p class="stat-value" id="first-class">—</p>
-        </article>
-        <article class="stat-card">
-          <span class="stat-label">Last class</span>
-          <p class="stat-value" id="last-class">—</p>
-        </article>
-      </section>
-
-      <section class="card">
-        <div class="card-header">
-          <div>
-            <h2>Your weekly schedule</h2>
-            <p class="page-subtitle">Choose a weekday to view its classes.</p>
-          </div>
-        </div>
-
-        <div class="day-tabs" id="day-tabs" aria-label="Choose weekday">
-          <button class="day-tab" data-day="Monday" aria-pressed="true">Mon</button>
-          <button class="day-tab" data-day="Tuesday" aria-pressed="false">Tue</button>
-          <button class="day-tab" data-day="Wednesday" aria-pressed="false">Wed</button>
-          <button class="day-tab" data-day="Thursday" aria-pressed="false">Thu</button>
-          <button class="day-tab" data-day="Friday" aria-pressed="false">Fri</button>
-          <button class="day-tab" data-day="Saturday" aria-pressed="false">Sat</button>
-        </div>
-
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Time</th>
-                <th scope="col">Subject</th>
-                <th scope="col">Type</th>
-                <th scope="col">Location</th>
-              </tr>
-            </thead>
-            <tbody id="timetable-rows"></tbody>
-          </table>
-        </div>
-        <p class="empty-state" id="no-classes" hidden>No classes scheduled for this day.</p>
-      </section>
-    </main>
-  </div>
-</div>
+    </div>
 </body>
+
 </html>
