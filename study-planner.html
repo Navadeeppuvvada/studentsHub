@@ -1,0 +1,113 @@
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b1020">
+
+    <title>Study Planner | StudentHub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/app.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/study-planner.js" defer></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" data-sidebar></aside>
+
+        <div class="main-area">
+            <header class="topbar">
+                <button
+                    class="icon-button mobile-menu"
+                    data-mobile-menu
+                    aria-label="Open navigation"
+                >
+                    ☰
+                </button>
+
+                <span class="topbar-title">
+                    Your academic space
+                </span>
+
+                <div class="topbar-actions">
+                    <button
+                        class="theme-toggle"
+                        data-theme-toggle
+                        type="button"
+                        aria-label="Switch theme"
+                    ></button>
+
+                    <a class="btn btn-quiet" href="notifications.html">
+                        Notifications
+                    </a>
+
+                    <a
+                        class="avatar"
+                        href="profile.html"
+                        aria-label="My profile"
+                    >
+                        N
+                    </a>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <div class="page-heading">
+                    <div>
+                        <span class="eyebrow">FOCUS</span>
+
+                        <h1>Study Planner</h1>
+
+                        <p>
+                            Turn your learning goals into small,
+                            achievable tasks.
+                        </p>
+                    </div>
+
+                    <button class="btn btn-primary" id="add-task">
+                        + Add task
+                    </button>
+                </div>
+
+                <section class="card">
+                    <div class="card-header">
+                        <h2>This week's focus</h2>
+
+                        <span class="pill" id="task-progress">
+                            0 completed
+                        </span>
+                    </div>
+
+                    <div id="task-list"></div>
+                </section>
+
+                <section
+                    class="card"
+                    style="margin-top: 18px"
+                >
+                    <div class="card-header">
+                        <h2>Weekly overview</h2>
+                    </div>
+
+                    <div
+                        class="week-grid"
+                        id="week-grid"
+                    ></div>
+                </section>
+
+                <p class="footer-note">
+                    StudentHub · Your academic space ·
+                    <span data-year></span>
+                    · Demo data is stored in this browser only.
+                </p>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
