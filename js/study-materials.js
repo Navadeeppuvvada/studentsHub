@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
             showToast("Please enter a valid http(s) URL");
             return;
         }
-
+                        
         items.unshift({
             title: title.trim(),
             subject,
@@ -102,3 +102,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     render();
 });
+
