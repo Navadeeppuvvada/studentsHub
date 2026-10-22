@@ -1,0 +1,110 @@
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b1020">
+
+    <title>Placement | StudentHub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/app.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/placement.js" defer></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" data-sidebar></aside>
+
+        <div class="main-area">
+            <header class="topbar">
+                <button
+                    class="icon-button mobile-menu"
+                    data-mobile-menu
+                    aria-label="Open navigation"
+                >
+                    ☰
+                </button>
+
+                <span class="topbar-title">
+                    Your academic space
+                </span>
+
+                <div class="topbar-actions">
+                    <button
+                        class="theme-toggle"
+                        data-theme-toggle
+                        type="button"
+                        aria-label="Switch theme"
+                    ></button>
+
+                    <a class="btn btn-quiet" href="notifications.html">
+                        Notifications
+                    </a>
+
+                    <a
+                        class="avatar"
+                        href="profile.html"
+                        aria-label="My profile"
+                    >
+                        N
+                    </a>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <div class="hero">
+                    <div>
+                        <span class="eyebrow">CAREER READINESS</span>
+
+                        <h1>
+                            Your next opportunity starts
+                            <span class="gradient-text">here.</span>
+                        </h1>
+
+                        <p>
+                            Track preparation goals, explore opportunities and keep
+                            your career documents ready.
+                        </p>
+
+                        <button class="btn btn-primary" id="resume-btn">
+                            Prepare resume ↗
+                        </button>
+                    </div>
+
+                    <div class="hero-art">
+                        <div class="orb">💼</div>
+
+                        <div class="float-card float-one">
+                            <strong>3 steps</strong>
+                            <span>to keep progressing</span>
+                        </div>
+
+                        <div class="float-card float-two">
+                            <strong>Keep going</strong>
+                            <span>Consistency matters</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="content-grid"
+                    id="placement-grid"
+                    style="margin-top: 20px"
+                ></div>
+
+                <p class="footer-note">
+                    StudentHub · Your academic space ·
+                    <span data-year></span>
+                    · Demo data is stored in this browser only.
+                </p>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

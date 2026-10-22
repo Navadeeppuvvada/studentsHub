@@ -1,0 +1,102 @@
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b1020">
+
+    <title>Events & Clubs | StudentHub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/app.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/events-clubs.js" defer></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" data-sidebar></aside>
+
+        <div class="main-area">
+            <header class="topbar">
+                <button
+                    class="icon-button mobile-menu"
+                    data-mobile-menu
+                    aria-label="Open navigation"
+                >
+                    ☰
+                </button>
+
+                <span class="topbar-title">
+                    Your academic space
+                </span>
+
+                <div class="topbar-actions">
+                    <button
+                        class="theme-toggle"
+                        data-theme-toggle
+                        type="button"
+                        aria-label="Switch theme"
+                    ></button>
+
+                    <a class="btn btn-quiet" href="notifications.html">
+                        Notifications
+                    </a>
+
+                    <a
+                        class="avatar"
+                        href="profile.html"
+                        aria-label="My profile"
+                    >
+                        N
+                    </a>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <div class="page-heading">
+                    <div>
+                        <span class="eyebrow">CAMPUS LIFE</span>
+
+                        <h1>Events & Clubs</h1>
+
+                        <p>
+                            Find workshops, communities and activities beyond the classroom.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="toolbar">
+                    <input
+                        class="field"
+                        id="event-search"
+                        placeholder="Search events or clubs..."
+                    >
+
+                    <select class="select" id="event-filter">
+                        <option value="all">All events</option>
+                        <option value="Workshop">Workshops</option>
+                        <option value="Club">Clubs</option>
+                        <option value="Career">Career</option>
+                    </select>
+                </div>
+
+                <div
+                    class="content-grid"
+                    id="event-grid"
+                ></div>
+
+                <p class="footer-note">
+                    StudentHub · Your academic space ·
+                    <span data-year></span>
+                    · Demo data is stored in this browser only.
+                </p>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
