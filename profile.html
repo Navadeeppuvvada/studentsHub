@@ -1,0 +1,146 @@
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b1020">
+
+    <title>My Profile | StudentHub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/app.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/profile.js" defer></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" data-sidebar></aside>
+
+        <div class="main-area">
+            <header class="topbar">
+                <button
+                    class="icon-button mobile-menu"
+                    data-mobile-menu
+                    aria-label="Open navigation"
+                >
+                    ☰
+                </button>
+
+                <span class="topbar-title">
+                    Your academic space
+                </span>
+
+                <div class="topbar-actions">
+                    <button
+                        class="theme-toggle"
+                        data-theme-toggle
+                        type="button"
+                        aria-label="Switch theme"
+                    ></button>
+
+                    <a class="btn btn-quiet" href="notifications.html">
+                        Notifications
+                    </a>
+
+                    <a
+                        class="avatar"
+                        href="profile.html"
+                        aria-label="My profile"
+                    >
+                        N
+                    </a>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <div class="page-heading">
+                    <div>
+                        <span class="eyebrow">PERSONAL</span>
+
+                        <h1>My Profile</h1>
+
+                        <p>
+                            Keep your student information up to date.
+                        </p>
+                    </div>
+                </div>
+
+                <section class="card">
+                    <form id="profile-form" class="form-grid">
+                        <div class="form-field">
+                            <label for="profile-name">Full name</label>
+                            <input
+                                class="field"
+                                id="profile-name"
+                                value="Navadeep"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-field">
+                            <label for="profile-course">Course</label>
+                            <input
+                                class="field"
+                                id="profile-course"
+                                value="B.Tech"
+                            >
+                        </div>
+
+                        <div class="form-field">
+                            <label for="profile-university">University</label>
+                            <input
+                                class="field"
+                                id="profile-university"
+                                value="KL University"
+                            >
+                        </div>
+
+                        <div class="form-field">
+                            <label for="profile-email">Email</label>
+                            <input
+                                class="field"
+                                id="profile-email"
+                                type="email"
+                                placeholder="student@example.com"
+                            >
+                        </div>
+
+                        <div class="form-field full">
+                            <label for="profile-goal">
+                                Current learning goal
+                            </label>
+
+                            <textarea
+                                class="textarea"
+                                id="profile-goal"
+                                rows="3"
+                                placeholder="e.g. Strengthen Java and DSA fundamentals"
+                            ></textarea>
+                        </div>
+
+                        <div class="form-field full">
+                            <button
+                                class="btn btn-primary"
+                                type="submit"
+                            >
+                                Save profile
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <p class="footer-note">
+                    StudentHub · Your academic space ·
+                    <span data-year></span>
+                    · Demo data is stored in this browser only.
+                </p>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
