@@ -43,14 +43,16 @@
 
         if (sidebar) {
             sidebar.innerHTML = `
-                <a class="brand" href="index.html">
-                    <span class="brand-mark">S</span>
+                
+            <div class="sidebar-brand">
+                <div class="brand-mark">S</div>
 
-                    <span>
-                        <strong>StudentHub</strong>
-                        <small>YOUR ACADEMIC SPACE</small>
-                    </span>
-                </a>
+                <div class="sidebar-brand-text">
+                    <h2 class="brand-name">StudentHub</h2>
+                    <p class="brand-tagline">YOUR ACADEMIC SPACE</p>
+                </div>
+            </div>
+
 
                 <nav class="nav-group">
                     ${nav.map(group => `

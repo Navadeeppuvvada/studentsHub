@@ -1,12 +1,12 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     const data = [
-        ["Java Programming", "Prof. Rao", 4, 78, 88, "core", "☕"],
-        ["Data Structures", "Dr. Kumar", 4, 65, 84, "core", "⌘"],
-        ["Web Development", "Prof. Sharma", 3, 82, 82, "core", "⌘"],
-        ["Database Systems", "Dr. Priya", 4, 72, 76, "core", "▤"],
-        ["Computer Networks", "Prof. Ramesh", 3, 60, 80, "core", "◎"],
-        ["UI/UX Design", "Prof. Anjali", 2, 90, 92, "elective", "✦"]
+        ["Java Programming", "Prof. Vijay", 4, 78, 88, "core", "☕"],
+        ["Front End Frameworks", "Prof. Ashesh", 4, 65, 84, "core", "⌘"],
+        ["ESD & IOT", "Prof. Pavan ", 3, 82, 82, "core", "⌘"],
+        ["AIML", "Prof. Lakshmi ", 4, 72, 76, "core", "▤"],
+        ["Maths for DA & DS", "Prof. Ramesh", 3, 60, 80, "core", "◎"],
+        // ["UI/UX Design", "Prof. Anjali", 2, 90, 92, "elective", "✦"]
     ];
 
     const grid = document.getElementById("subject-grid");

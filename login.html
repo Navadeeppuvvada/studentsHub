@@ -1,0 +1,124 @@
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <meta name="theme-color" content="#0b1020">
+
+    <title>Sign in | StudentHub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/theme.js" defer></script>
+    <script src="js/login.js" defer></script>
+</head>
+
+<body>
+    <div class="auth-page">
+
+        <section class="auth-showcase" aria-label="StudentHub introduction">
+            <a class="auth-brand" href="index.html">
+                <span class="brand-mark">S</span>
+                <span>
+                    <strong>StudentHub</strong>
+                    <small>YOUR ACADEMIC SPACE</small>
+                </span>
+            </a>
+
+            <div class="auth-pitch">
+                <span class="eyebrow">YOUR SEMESTER, IN ONE PLACE</span>
+
+                <h1>
+                    Make space for your
+                    <span class="gradient-text">next big thing.</span>
+                </h1>
+
+                <p>
+                    Keep your academic life organised—from classes and assignments to study goals and campus opportunities.
+                </p>
+            </div>
+
+            <div class="auth-orb" aria-hidden="true"></div>
+
+            <p class="auth-showcase-foot">
+                StudentHub · Learn with intention. Grow with confidence.
+            </p>
+        </section>
+
+        <section class="auth-panel">
+            <div class="auth-panel-top">
+                <a class="auth-top-link" href="index.html">
+                    ← Back to dashboard
+                </a>
+
+                <button
+                    class="theme-toggle"
+                    data-theme-toggle
+                    type="button"
+                    aria-label="Switch theme">
+                </button>
+            </div>
+
+            <div class="auth-form-wrap">
+                <span class="eyebrow">WELCOME BACK</span>
+
+                <h2>Sign in to StudentHub</h2>
+
+                <p class="auth-description">
+                    Pick up where you left off.
+                </p>
+
+                <form id="login-form" class="auth-form" novalidate>
+                   <div class="auth-message" id="auth-message" role="status"></div>
+
+                    <div class="auth-field">
+                        <label for="login-email">Email address</label>
+
+                        <input
+                            class="field"
+                            id="login-email"
+                            name="email"
+                            type="email"
+                            autocomplete="email"
+                            placeholder="you@example.com"
+                            required>
+                    </div>
+
+                    <div class="auth-field">
+                        <label for="login-password">Password</label>
+
+                        <input
+                            class="field"
+                            id="login-password"
+                            name="password"
+                            type="password"
+                            autocomplete="current-password"
+                            minlength="8"
+                            placeholder="Enter your password"
+                            required>
+                    </div>
+
+                    <button
+                        class="btn btn-primary auth-submit"
+                        type="submit">
+                        Sign in
+                        <span aria-hidden="true">→</span>
+                    </button>
+                </form>
+
+                <p class="auth-switch">
+                    New to StudentHub?
+                    <a href="signup.html">Create an account</a>
+                </p>
+
+                <p class="auth-note">
+                    Demo prototype: this page validates your inputs locally. It does not verify credentials against a server or provide secure authentication.
+                </p>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>

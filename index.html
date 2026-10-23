@@ -6,9 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#0b1020">
-
-    <title>Dashboard | StudentHub</title>
-
+    <link rel="stylesheet">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>StudentHub</title>
+    <link rel="icon" type="image/png" href="assets/studenthub-icon.png">
     <link rel="stylesheet" href="css/style.css">
 
     <script src="js/app.js" defer></script>
@@ -21,40 +23,31 @@
         <aside class="sidebar" data-sidebar></aside>
 
         <div class="main-area">
-            <header class="topbar">
-                <button
-                    class="icon-button mobile-menu"
-                    data-mobile-menu
-                    aria-label="Open navigation"
-                >
-                    ☰
-                </button>
 
-                <span class="topbar-title">
-                    Your academic space
-                </span>
+  <header class="topbar">
 
-                <div class="topbar-actions">
-                    <button
-                        class="theme-toggle"
-                        data-theme-toggle
-                        type="button"
-                        aria-label="Switch theme"
-                    ></button>
+  <div class="topbar-actions">
+    <a class="btn btn-ghost" href="login.html">
+      Sign In
+    </a>
 
-                    <a class="btn btn-quiet" href="notifications.html">
-                        Notifications
-                    </a>
+    <a class="btn btn-ghost"
+       href="notifications.html">
+      Notifications
+    </a>
+    <button
+    class="theme-toggle"
+    data-theme-toggle
+    type="button"
+    aria-label="Switch theme"
+    title="Switch theme">
+</button>
 
-                    <a
-                        class="avatar"
-                        href="profile.html"
-                        aria-label="My profile"
-                    >
-                        N
-                    </a>
-                </div>
-            </header>
+    <a class="avatar"
+       href="profile.html"
+       aria-label="My profile">N</a>
+  </div>
+</header>
 
             <main class="page-content">
                 <section class="hero">
@@ -320,14 +313,112 @@
                     </section>
                 </div>
 
+                
                 <p class="footer-note">
                     StudentHub · Your academic space ·
                     <span data-year></span>
                     · Demo data is stored in this browser only.
                 </p>
             </main>
+
+            <!-- StudentHub Footer -->
+            <footer class="studenthub-footer">
+                <div class="footer-main">
+
+                    <div class="footer-brand">
+                        <a href="index.html" class="footer-logo">
+                            Student<span>Hub</span>
+                        </a>
+                        <p class="footer-tagline">Your academic space.</p>
+                        <p class="footer-description">
+                            Organize your subjects, manage assignments,
+                            track your progress, and make college life easier.
+                        </p>
+                        
+                        <div class="footer-socials">
+                            <a href="https://github.com/Navadeeppuvvada"
+                            target="_blank" rel="noopener noreferrer"
+                            aria-label="GitHub">
+                                <i class="fa-brands fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/navadeeppuvvada"
+                            target="_blank" rel="noopener noreferrer"
+                            aria-label="LinkedIn">
+                                <i class="fa-brands fa-linkedin"></i>
+                                <span>LinkedIn</span>
+                            </a>
+
+                            <a href="https://www.instagram.com/the_navadeep._?psln=MXJ4YTF1MTE2NWkybA=="
+                            target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <a href="index.html">Dashboard</a>
+                        <a href="profile.html">My Profile</a>
+                        <a href="subjects.html">My Subjects</a>
+                        <a href="assignments.html">Assignments</a>
+                        <a href="timetable.html">Timetable</a>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <a href="study-materials.html">Study Materials</a>
+                        <a href="study-planner.html">Study Planner</a>
+                        <a href="placement.html">Placements</a>
+                        <a href="community.html">Community</a>
+                        <a href="events-clubs.html">Events & Clubs</a>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>Explore More</h3>
+                        <a href="announcements.html">Announcements</a>
+                        <a href="notifications.html">Notifications</a>
+                        <a href="settings.html">Settings</a>
+                        <a href="profile.html">Account</a>
+                    </div>
+
+                    <div class="footer-newsletter">
+                        <h3>Stay Connected</h3>
+                        <p>
+                            Keep up with your academic journey and
+                            discover useful learning resources.
+                        </p>
+                        <form class="footer-subscribe" id="footerSubscribe">
+                            <input type="email" id="footerEmail"
+                                   placeholder="Enter your email"
+                                   aria-label="Email address" required>
+                            <button type="submit"
+                                    aria-label="Subscribe">→</button>
+                        </form>
+                        <p id="footerMessage" class="footer-message"
+                           aria-live="polite"></p>
+                    </div>
+
+                </div>
+
+                <div class="footer-bottom">
+                    <p>© <span data-year></span> StudentHub.
+                       All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="settings.html">Settings</a>
+                        <span>•</span>
+                        <a href="profile.html">Profile</a>
+                        <span>•</span>
+                        <a href="community.html">Community</a>
+                    </div>
+                </div>
+            </footer>
+
         </div>
     </div>
 </body>
-
 </html>
