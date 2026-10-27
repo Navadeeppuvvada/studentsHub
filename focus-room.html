@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+
+  <title>Focus Room | StudentHub</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/focus-room.css">
+  <!-- <link rel="icon" href="data:,"> -->
+
+  <script src="js/app.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/focus-room.js" defer></script>
+</head>
+
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" data-sidebar></aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <button class="icon-button mobile-menu"
+                data-mobile-menu
+                aria-label="Open navigation">☰</button>
+
+        <span class="topbar-title">Your academic space</span>
+
+        <div class="topbar-actions">
+          <button class="theme-toggle"
+                  data-theme-toggle
+                  type="button"
+                  aria-label="Switch theme"></button>
+
+          <a class="btn btn-quiet" href="notifications.html">
+            Notifications
+          </a>
+
+          <a class="avatar" href="profile.html" aria-label="My profile">N</a>
+        </div>
+      </header>
+
+      <main class="page-content focus-page">
+
+        <section class="focus-heading">
+          <div>
+            <span class="eyebrow">STUDY SMARTER</span>
+            <h1>Focus Room</h1>
+            <p>A little focus every day leads to big progress.</p>
+          </div>
+
+          <div class="focus-date">
+            <span class="focus-date-icon">✦</span>
+            <div>
+              <strong id="focus-date">Your daily focus</strong>
+              <small>One session at a time.</small>
+            </div>
+          </div>
+        </section>
+
+        <section class="focus-layout">
+
+          <!-- Main timer -->
+          <article class="card timer-card">
+            <div class="timer-topline">
+              <div>
+                <span class="eyebrow">YOUR FOCUS SESSION</span>
+                <h2 id="mode-title">Time to focus</h2>
+              </div>
+              <span class="session-badge" id="session-badge">
+                SESSION 01
+              </span>
+            </div>
+
+            <div class="mode-tabs" role="group" aria-label="Timer mode">
+              <button class="mode-tab active" data-mode="focus"
+                      type="button" aria-pressed="true">
+                <span>◉</span> Focus
+              </button>
+              <button class="mode-tab" data-mode="short"
+                      type="button" aria-pressed="false">
+                <span>☕</span> Short break
+              </button>
+              <button class="mode-tab" data-mode="long"
+                      type="button" aria-pressed="false">
+                <span>☕</span> Long break
+              </button>
+            </div>
+
+            <div class="timer-ring" id="timer-ring">
+              <div class="timer-ring-inner">
+                <span class="timer-caption" id="timer-caption">
+                  STAY PRESENT
+                </span>
+                <div class="timer-time" id="timer-time"
+                     role="timer" aria-live="off">25:00</div>
+                <span class="timer-subtitle" id="timer-subtitle">
+                  Every minute counts
+                </span>
+              </div>
+            </div>
+
+            <div class="timer-actions">
+              <button class="btn btn-primary timer-main-btn"
+                      id="start-pause" type="button">
+                <span id="start-icon">▶</span>
+                <span id="start-label">Start focus</span>
+              </button>
+              <button class="btn btn-quiet timer-reset-btn"
+                      id="reset-timer" type="button">
+                ↻ Reset
+              </button>
+            </div>
+
+            <p class="timer-hint" id="timer-hint">
+              Put distractions aside. You've got this.
+            </p>
+
+            <div class="timer-divider"></div>
+
+            <div class="timer-settings">
+              <div>
+                <strong>Session duration</strong>
+                <small>Customize your timer</small>
+              </div>
+
+              <div class="duration-controls">
+                <label>
+                  <span>Focus</span>
+                  <input id="focus-duration" type="number"
+                         min="1" max="180" value="25">
+                  <span>min</span>
+                </label>
+
+                <label>
+                  <span>Short</span>
+                  <input id="short-duration" type="number"
+                         min="1" max="60" value="5">
+                  <span>min</span>
+                </label>
+
+                <label>
+                  <span>Long</span>
+                  <input id="long-duration" type="number"
+                         min="1" max="90" value="15">
+                  <span>min</span>
+                </label>
+
+                <button class="icon-button duration-save"
+                        id="save-durations" type="button"
+                        aria-label="Save timer durations"
+                        title="Save durations">✓</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Right column -->
+          <div class="focus-side">
+
+            <article class="card task-card">
+              <div class="card-header">
+                <div>
+                  <span class="eyebrow">INTENTION</span>
+                  <h2>What are you working on?</h2>
+                </div>
+                <span class="task-icon">✎</span>
+              </div>
+
+              <label class="field-label" for="task-name">
+                Current study task
+              </label>
+
+              <input id="task-name" class="focus-input"
+                     type="text" maxlength="120"
+                     placeholder="e.g. Practice binary trees">
+
+              <p class="field-hint">
+                Set one clear goal for this session.
+              </p>
+
+              <div class="task-preview">
+                <span class="task-preview-icon">◎</span>
+                <div>
+                  <small>YOUR CURRENT GOAL</small>
+                  <strong id="task-preview">Choose a task to begin</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="card goal-card">
+              <div class="card-header">
+                <div>
+                  <span class="eyebrow">DAILY TARGET</span>
+                  <h2>Focus goal</h2>
+                </div>
+                <span class="goal-icon">🎯</span>
+              </div>
+
+              <div class="goal-numbers">
+                <div>
+                  <strong id="goal-completed">0</strong>
+                  <span>of <span id="goal-target">120</span> min</span>
+                </div>
+                <span class="goal-percent" id="goal-percent">0%</span>
+              </div>
+
+              <div class="goal-track">
+                <div class="goal-fill" id="goal-fill"></div>
+              </div>
+
+              <label class="goal-setting" for="daily-goal">
+                Daily focus target
+                <select id="daily-goal">
+                  <option value="30">30 minutes</option>
+                  <option value="60">1 hour</option>
+                  <option value="90">1.5 hours</option>
+                  <option value="120" selected>2 hours</option>
+                  <option value="180">3 hours</option>
+                  <option value="240">4 hours</option>
+                  <option value="300">5 hours</option>
+                </select>
+              </label>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- Daily stats -->
+        <section class="focus-stats-section">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">YOUR PROGRESS</span>
+              <h2>Today's activity</h2>
+            </div>
+            <span class="today-chip" id="today-label">Today</span>
+          </div>
+
+          <div class="focus-stats-grid">
+            <article class="card focus-stat">
+              <span class="stat-icon stat-purple">◷</span>
+              <div>
+                <small>Focus time</small>
+                <strong id="stat-minutes">0 min</strong>
+                <span>Completed focus sessions</span>
+              </div>
+            </article>
+
+            <article class="card focus-stat">
+              <span class="stat-icon stat-blue">✓</span>
+              <div>
+                <small>Sessions completed</small>
+                <strong id="stat-sessions">0</strong>
+                <span>Focus sessions today</span>
+              </div>
+            </article>
+
+            <article class="card focus-stat">
+              <span class="stat-icon stat-orange">⚡</span>
+              <div>
+                <small>Current streak</small>
+                <strong id="stat-streak">0 days</strong>
+                <span>Consecutive active days</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Recent sessions -->
+        <section class="card history-card">
+          <div class="card-header">
+            <div>
+              <span class="eyebrow">YOUR JOURNEY</span>
+              <h2>Recent focus sessions</h2>
+            </div>
+            <button class="btn btn-quiet btn-small"
+                    id="clear-history" type="button">
+              Clear history
+            </button>
+          </div>
+
+          <div id="session-history" class="session-history">
+            <div class="history-empty">
+              <span>◷</span>
+              <strong>Your progress starts here</strong>
+              <p>Complete your first focus session to see it here.</p>
+            </div>
+          </div>
+        </section>
+
+        <p class="footer-note">
+          StudentHub · Focus Room · <span data-year></span>
+          · Your focus data is stored in this browser.
+        </p>
+
+      </main>
+    </div>
+  </div>
+</body>
+</html>
