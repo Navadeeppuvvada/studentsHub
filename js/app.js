@@ -16,7 +16,8 @@
                 ["Timetable", "timetable.html", "▦"],
                 ["Study Planner", "study-planner.html", "◷"],
                 ["Study Materials", "study-materials.html", "▧"],
-                ["Focus Room", "focus-room.html", "◉"]
+                ["Focus Room", "focus-room.html", "◉"],
+                ["Coding Arena", "career-arena.html", "⌘"]
             ]
         },
         {

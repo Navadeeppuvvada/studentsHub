@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career & Coding Arena | StudentHub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/career-arena.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" data-sidebar></aside>
+
+        <main class="career-page">
+            <header class="career-topbar">
+                <div>
+                    <span class="eyebrow">STUDENTHUB / CAREER DEVELOPMENT</span>
+                    <h1>Career & Coding Arena</h1>
+                    <p>Build skills. Solve problems. Get placement-ready.</p>
+                </div>
+
+                <div class="career-top-actions">
+                    <button class="icon-button" id="theme-toggle"
+                            data-theme-toggle aria-label="Toggle theme"
+                            title="Toggle theme">◐</button>
+                    <a class="icon-button" href="notifications.html"
+                       aria-label="Notifications" title="Notifications">♧</a>
+                    <a class="icon-button" href="profile.html"
+                       aria-label="Profile" title="Profile">♙</a>
+                </div>
+            </header>
+
+            <section class="career-hero">
+                <div class="hero-copy">
+                    <span class="hero-label">YOUR NEXT LEVEL STARTS HERE</span>
+                    <h2>Turn your preparation<br>into <span>progress.</span></h2>
+                    <p>Track your DSA journey, sharpen interview skills, and prepare for your dream placement — one step at a time.</p>
+                    <a href="#dsa" class="primary-button">Continue preparation <span>→</span></a>
+                </div>
+                <div class="hero-art" aria-hidden="true">
+                    <div class="orbit orbit-one"></div>
+                    <div class="orbit orbit-two"></div>
+                    <div class="code-window">
+                        <div class="code-dots"><i></i><i></i><i></i></div>
+                        <div><span class="code-purple">public</span> <span class="code-blue">class</span> Future {</div>
+                        <div class="code-indent"><span class="code-purple">void</span> prepare() {</div>
+                        <div class="code-indent code-indent-two">practice();</div>
+                        <div class="code-indent code-indent-two">improve();</div>
+                        <div class="code-indent">}</div>
+                        <div>}</div>
+                        <div class="code-success">✓ Progress is compiling...</div>
+                    </div>
+                    <div class="floating-badge">⌘ &nbsp; Keep solving</div>
+                </div>
+            </section>
+
+            <section class="career-stats" aria-label="Preparation overview">
+                <article class="career-stat">
+                    <div class="stat-icon purple">⌘</div>
+                    <div><span>DSA problems</span><strong id="stat-dsa">0</strong><small>Marked completed</small></div>
+                </article>
+                <article class="career-stat">
+                    <div class="stat-icon cyan">✓</div>
+                    <div><span>Coding challenges</span><strong id="stat-challenges">0%</strong><small>Checklist progress</small></div>
+                </article>
+                <article class="career-stat">
+                    <div class="stat-icon orange">◈</div>
+                    <div><span>Interview questions</span><strong id="stat-questions">0</strong><small>Practiced questions</small></div>
+                </article>
+                <article class="career-stat">
+                    <div class="stat-icon green">↗</div>
+                    <div><span>Skills progress</span><strong id="stat-skills">0%</strong><small>Self-assessed growth</small></div>
+                </article>
+            </section>
+
+            <section class="career-section" id="dsa">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">01 / DAILY PRACTICE</span>
+                        <h2>DSA Practice Tracker</h2>
+                        <p>Track the topics you're learning and the problems you've solved.</p>
+                    </div>
+                    <span class="section-symbol">⌘</span>
+                </div>
+
+                <div class="arena-card">
+                    <div class="dsa-toolbar">
+                        <label class="field-group">
+                            <span>Topic</span>
+                            <select id="dsa-topic">
+                                <option>Arrays</option>
+                                <option>Strings</option>
+                                <option>Two Pointers</option>
+                                <option>Binary Search</option>
+                                <option>Linked List</option>
+                                <option>Stack & Queue</option>
+                                <option>Recursion</option>
+                                <option>Trees & BST</option>
+                                <option>Graphs</option>
+                                <option>Dynamic Programming</option>
+                                <option>Greedy</option>
+                                <option>Backtracking</option>
+                                <option>Heap & Hashing</option>
+                            </select>
+                        </label>
+                        <label class="field-group">
+                            <span>Problem name</span>
+                            <input id="dsa-name" type="text" placeholder="e.g. Two Sum">
+                        </label>
+                        <label class="field-group difficulty-field">
+                            <span>Difficulty</span>
+                            <select id="dsa-difficulty">
+                                <option>Easy</option>
+                                <option>Medium</option>
+                                <option>Hard</option>
+                            </select>
+                        </label>
+                        <button class="primary-button" id="add-dsa">+ Add problem</button>
+                    </div>
+
+                    <div class="progress-header">
+                        <span>Your practice log</span>
+                        <span id="dsa-count-label">0 problems completed</span>
+                    </div>
+                    <div class="progress-track"><div id="dsa-progress" class="progress-fill"></div></div>
+
+                    <div class="table-scroll">
+                        <table class="career-table">
+                            <thead>
+                                <tr><th>Problem</th><th>Topic</th><th>Difficulty</th><th>Status</th><th></th></tr>
+                            </thead>
+                            <tbody id="dsa-list"></tbody>
+                        </table>
+                    </div>
+                    <p class="empty-state" id="dsa-empty">No problems added yet. Add the first problem you're working on.</p>
+                </div>
+            </section>
+
+            <section class="career-section" id="challenges">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">02 / BUILD CONSISTENCY</span>
+                        <h2>Coding Challenge Checklist</h2>
+                        <p>Small milestones add up. Tick each challenge when you finish it.</p>
+                    </div>
+                    <span class="section-symbol">✓</span>
+                </div>
+
+                <div class="challenge-layout">
+                    <div class="arena-card challenge-card">
+                        <div class="card-title-row">
+                            <div><h3>Preparation milestones</h3><p>Your personal coding checklist</p></div>
+                            <span class="mini-counter" id="challenge-counter">0 / 0</span>
+                        </div>
+                        <div class="challenge-list" id="challenge-list"></div>
+                        <form class="add-inline-form" id="challenge-form">
+                            <input id="challenge-input" type="text" placeholder="Add your own challenge..." maxlength="100" required>
+                            <button class="secondary-button" type="submit">Add</button>
+                        </form>
+                    </div>
+
+                    <div class="arena-card challenge-progress-card">
+                        <span class="eyebrow">COMPLETION</span>
+                        <div class="progress-ring" id="challenge-ring">
+                            <div><strong id="challenge-percent">0%</strong><span>completed</span></div>
+                        </div>
+                        <p>Keep your streak alive by completing at least one preparation task each day.</p>
+                        <div class="mini-tip"><span>✦</span><div><strong>Tip for today</strong><p>Practice consistently instead of cramming before interviews.</p></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="career-section" id="interviews">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">03 / INTERVIEW READINESS</span>
+                        <h2>Interview Question Bank</h2>
+                        <p>Choose a category, practice answering, then mark the question as practiced.</p>
+                    </div>
+                    <span class="section-symbol">◈</span>
+                </div>
+
+                <div class="arena-card">
+                    <div class="question-toolbar">
+                        <div class="filter-tabs" id="question-filters">
+                            <button class="filter-tab active" data-filter="All">All</button>
+                            <button class="filter-tab" data-filter="Java">Java</button>
+                            <button class="filter-tab" data-filter="DSA">DSA</button>
+                            <button class="filter-tab" data-filter="Web">Web Development</button>
+                            <button class="filter-tab" data-filter="HR">HR</button>
+                        </div>
+                        <span class="mini-counter" id="question-counter">0 practiced</span>
+                    </div>
+                    <div class="question-list" id="question-list"></div>
+                </div>
+            </section>
+
+            <section class="career-section" id="skills">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">04 / CAREER GROWTH</span>
+                        <h2>Resume & Skill Progress</h2>
+                        <p>Rate your confidence honestly and update it as you learn.</p>
+                    </div>
+                    <span class="section-symbol">↗</span>
+                </div>
+
+                <div class="skills-layout">
+                    <div class="arena-card skills-card">
+                        <div class="card-title-row">
+                            <div><h3>Your skill matrix</h3><p>Adjust each skill from beginner to confident.</p></div>
+                        </div>
+                        <div id="skills-list" class="skills-list"></div>
+                        <form class="add-inline-form" id="skill-form">
+                            <input id="skill-input" type="text" placeholder="Add a skill (e.g. SQL)" maxlength="50" required>
+                            <button class="secondary-button" type="submit">Add skill</button>
+                        </form>
+                    </div>
+
+                    <div class="arena-card resume-card">
+                        <div class="resume-icon">▤</div>
+                        <h3>Resume readiness</h3>
+                        <p>Use this checklist to get your resume ready for applications.</p>
+                        <div id="resume-list" class="resume-list"></div>
+                        <label class="field-group resume-link-field">
+                            <span>Resume link (optional)</span>
+                            <input id="resume-url" type="url" placeholder="https://...">
+                        </label>
+                        <button class="secondary-button full-button" id="save-resume">Save resume details</button>
+                        <p class="form-feedback" id="resume-feedback" role="status"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="career-section" id="aptitude">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">05 / PLACEMENT BASICS</span>
+                        <h2>Aptitude Practice</h2>
+                        <p>Test yourself with a quick question, then reveal the answer.</p>
+                    </div>
+                    <span class="section-symbol">∑</span>
+                </div>
+
+                <div class="aptitude-layout">
+                    <div class="arena-card aptitude-card">
+                        <div class="aptitude-topline"><span class="tag tag-cyan" id="aptitude-category">QUANTITATIVE APTITUDE</span><span id="aptitude-number">QUESTION 1</span></div>
+                        <h3 id="aptitude-question">Loading question...</h3>
+                        <div class="aptitude-options" id="aptitude-options"></div>
+                        <div class="aptitude-feedback" id="aptitude-feedback" role="status"></div>
+                        <div class="aptitude-actions">
+                            <button class="secondary-button" id="show-answer">Reveal answer</button>
+                            <button class="primary-button" id="next-question">Next question →</button>
+                        </div>
+                    </div>
+                    <div class="arena-card aptitude-side">
+                        <span class="eyebrow">YOUR PRACTICE</span>
+                        <div class="aptitude-score"><strong id="aptitude-score">0</strong><span>correct answers</span></div>
+                        <div class="progress-track"><div class="progress-fill" id="aptitude-progress"></div></div>
+                        <p>Try to solve the question yourself before revealing the answer.</p>
+                        <button class="text-button" id="reset-aptitude">Reset score</button>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="career-footer">
+                <span>STUDENTHUB · CAREER ARENA</span>
+                <span>Your future is built one practice session at a time.</span>
+            </footer>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/career-arena.js"></script>
+</body>
+</html>
