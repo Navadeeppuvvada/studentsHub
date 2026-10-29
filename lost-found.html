@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Lost & Found | StudentHub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/lost-found.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+<div class="app-shell">
+    <aside class="sidebar" data-sidebar></aside>
+
+    <main class="lf-page">
+        <header class="lf-topbar">
+            <div>
+                <div class="lf-eyebrow">STUDENTHUB / CAMPUS COMMUNITY</div>
+                <h1>Campus Lost & Found</h1>
+                <p>Lost something? Found something? Let's reunite it with its owner.</p>
+            </div>
+
+            <div class="lf-top-actions">
+                <button class="lf-icon-button" data-theme-toggle
+                        aria-label="Toggle theme" title="Toggle theme">◐</button>
+                <a class="lf-icon-button" href="notifications.html"
+                   aria-label="Notifications" title="Notifications">♧</a>
+                <a class="lf-icon-button" href="profile.html"
+                   aria-label="Profile" title="Profile">♙</a>
+            </div>
+        </header>
+
+        <section class="lf-hero">
+            <div class="lf-hero-copy">
+                <span class="lf-hero-label"><span class="lf-live-dot"></span> YOUR CAMPUS, CONNECTED</span>
+                <h2>Every lost item<br>deserves a <span>way home.</span></h2>
+                <p>A shared space for students to report missing belongings, post found items, and help each other.</p>
+                <div class="lf-hero-actions">
+                    <button class="lf-button lf-button-primary" id="report-lost-btn">＋ Report lost item</button>
+                    <button class="lf-button lf-button-glass" id="report-found-btn">＋ I found something</button>
+                </div>
+            </div>
+            <div class="lf-hero-art" aria-hidden="true">
+                <div class="lf-hero-orbit orbit-a"></div>
+                <div class="lf-hero-orbit orbit-b"></div>
+                <div class="lf-hero-object object-card">
+                    <div class="object-card-icon">⌕</div>
+                    <strong>Lost & Found</strong>
+                    <span>Making connections</span>
+                    <div class="object-card-line"></div>
+                    <div class="object-card-line short"></div>
+                    <div class="object-card-status"><span></span> Community powered</div>
+                </div>
+                <div class="lf-float-item float-key">⚿</div>
+                <div class="lf-float-item float-book">▤</div>
+                <div class="lf-float-item float-check">✓</div>
+            </div>
+        </section>
+
+        <section class="lf-stats" aria-label="Lost and found statistics">
+            <article class="lf-stat">
+                <div class="lf-stat-icon purple">⌕</div>
+                <div><span>Open reports</span><strong id="stat-open">0</strong><small>Still looking or waiting</small></div>
+            </article>
+            <article class="lf-stat">
+                <div class="lf-stat-icon cyan">◈</div>
+                <div><span>Found items</span><strong id="stat-found">0</strong><small>Reported by the community</small></div>
+            </article>
+            <article class="lf-stat">
+                <div class="lf-stat-icon green">✓</div>
+                <div><span>Items returned</span><strong id="stat-resolved">0</strong><small>Marked as resolved</small></div>
+            </article>
+            <article class="lf-stat">
+                <div class="lf-stat-icon orange">♙</div>
+                <div><span>My reports</span><strong id="stat-mine">0</strong><small>Posted on this browser</small></div>
+            </article>
+        </section>
+
+        <section class="lf-toolbar-section">
+            <div class="lf-section-heading">
+                <div>
+                    <div class="lf-eyebrow">CAMPUS BOARD</div>
+                    <h2>Browse reports</h2>
+                    <p>Search the board or narrow it down to what you need.</p>
+                </div>
+                <button class="lf-button lf-button-primary" id="toolbar-report-btn">＋ Create report</button>
+            </div>
+
+            <div class="lf-filters">
+                <label class="lf-search">
+                    <span>⌕</span>
+                    <input id="search-input" type="search" placeholder="Search item, location, or keyword..." autocomplete="off">
+                    <kbd>/</kbd>
+                </label>
+
+                <select id="type-filter" aria-label="Filter by report type">
+                    <option value="all">All reports</option>
+                    <option value="lost">Lost items</option>
+                    <option value="found">Found items</option>
+                </select>
+
+                <select id="category-filter" aria-label="Filter by category">
+                    <option value="all">All categories</option>
+                    <option>Electronics</option>
+                    <option>Books & Notes</option>
+                    <option>ID & Cards</option>
+                    <option>Bags & Accessories</option>
+                    <option>Keys</option>
+                    <option>Clothing</option>
+                    <option>Water Bottles</option>
+                    <option>Other</option>
+                </select>
+
+                <select id="status-filter" aria-label="Filter by status">
+                    <option value="all">All statuses</option>
+                    <option value="open">Open</option>
+                    <option value="claimed">Claimed</option>
+                    <option value="resolved">Resolved</option>
+                </select>
+
+                <select id="sort-filter" aria-label="Sort reports">
+                    <option value="newest">Newest first</option>
+                    <option value="oldest">Oldest first</option>
+                </select>
+            </div>
+
+            <div class="lf-results-row">
+                <span id="results-count">0 reports</span>
+                <button class="lf-text-button" id="clear-filters">Clear filters</button>
+            </div>
+        </section>
+
+        <section class="lf-listing-grid" id="listing-grid" aria-live="polite"></section>
+
+        <section class="lf-empty" id="empty-state" hidden>
+            <div class="lf-empty-icon">⌕</div>
+            <h3>No matching reports</h3>
+            <p>Try another search or filter, or create a new report to help your campus community.</p>
+            <button class="lf-button lf-button-primary" id="empty-report-btn">Create a report</button>
+        </section>
+
+        <section class="lf-safety">
+            <div class="lf-safety-icon">♧</div>
+            <div>
+                <h3>A quick reminder about safe handovers</h3>
+                <p>Meet in a public campus location, verify ownership before handing over valuables, and never share passwords, OTPs, or sensitive ID details. For expensive items or sensitive documents, consider involving campus security.</p>
+            </div>
+        </section>
+
+        <footer class="lf-footer">
+            <span>STUDENTHUB · CAMPUS LOST & FOUND</span>
+            <span>A little help can make someone's day.</span>
+        </footer>
+    </main>
+</div>
+
+<!-- Create / edit report modal -->
+<div class="lf-modal-backdrop" id="report-modal" hidden>
+    <section class="lf-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="lf-modal-header">
+            <div>
+                <div class="lf-eyebrow">CAMPUS COMMUNITY</div>
+                <h2 id="modal-title">Create a report</h2>
+                <p>Share enough details to help identify the item.</p>
+            </div>
+            <button class="lf-modal-close" type="button" data-close-modal aria-label="Close dialog">×</button>
+        </div>
+
+        <form id="report-form">
+            <input type="hidden" id="edit-id">
+
+            <div class="lf-type-choice">
+                <label class="lf-type-option">
+                    <input type="radio" name="report-type" value="lost" checked>
+                    <span><strong>⌕ Lost item</strong><small>Something is missing</small></span>
+                </label>
+                <label class="lf-type-option">
+                    <input type="radio" name="report-type" value="found">
+                    <span><strong>✓ Found item</strong><small>Something needs its owner</small></span>
+                </label>
+            </div>
+
+            <div class="lf-form-grid">
+                <label class="lf-field lf-full">
+                    <span>Item name *</span>
+                    <input id="item-name" type="text" maxlength="80" placeholder="e.g. Black wireless earbuds" required>
+                </label>
+
+                <label class="lf-field">
+                    <span>Category *</span>
+                    <select id="item-category" required>
+                        <option value="">Choose category</option>
+                        <option>Electronics</option>
+                        <option>Books & Notes</option>
+                        <option>ID & Cards</option>
+                        <option>Bags & Accessories</option>
+                        <option>Keys</option>
+                        <option>Clothing</option>
+                        <option>Water Bottles</option>
+                        <option>Other</option>
+                    </select>
+                </label>
+
+                <label class="lf-field">
+                    <span id="location-label">Last seen location *</span>
+                    <input id="item-location" type="text" maxlength="100"
+                           placeholder="e.g. Library, second floor" required>
+                </label>
+
+                <label class="lf-field">
+                    <span id="date-label">Date lost *</span>
+                    <input id="item-date" type="date" required>
+                </label>
+
+                <label class="lf-field">
+                    <span>Contact name *</span>
+                    <input id="contact-name" type="text" maxlength="70" placeholder="Your name" required>
+                </label>
+
+                <label class="lf-field lf-full">
+                    <span>Description *</span>
+                    <textarea id="item-description" rows="3" maxlength="700"
+                              placeholder="Describe the item and any identifying details. Avoid posting sensitive information." required></textarea>
+                </label>
+
+                <label class="lf-field lf-full">
+                    <span>Contact method *</span>
+                    <input id="contact-method" type="text" maxlength="120"
+                           placeholder="e.g. College email or campus contact details" required>
+                    <small>Only share contact details you are comfortable making visible to people using this browser.</small>
+                </label>
+
+                <div class="lf-field lf-full">
+                    <span>Item photo (optional)</span>
+                    <label class="lf-upload" for="item-image">
+                        <input id="item-image" type="file" accept="image/png,image/jpeg,image/webp">
+                        <span class="lf-upload-icon">＋</span>
+                        <strong>Choose an image</strong>
+                        <small>JPG, PNG or WebP · up to 2 MB</small>
+                    </label>
+                    <div class="lf-image-preview" id="image-preview" hidden>
+                        <img id="preview-image" alt="Selected item preview">
+                        <button type="button" id="remove-image">Remove photo</button>
+                    </div>
+                    <small class="lf-form-warning">Do not upload photos containing passwords, full ID numbers, financial details, or other sensitive information.</small>
+                </div>
+            </div>
+
+            <div class="lf-modal-actions">
+                <button class="lf-button lf-button-secondary" type="button" data-close-modal>Cancel</button>
+                <button class="lf-button lf-button-primary" id="save-report-btn" type="submit">Publish report</button>
+            </div>
+            <p class="lf-form-message" id="form-message" role="status"></p>
+        </form>
+    </section>
+</div>
+
+<!-- Item detail modal -->
+<div class="lf-modal-backdrop" id="detail-modal" hidden>
+    <section class="lf-modal lf-detail-modal" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+        <div class="lf-modal-header">
+            <div>
+                <div class="lf-eyebrow">REPORT DETAILS</div>
+                <h2 id="detail-title">Item details</h2>
+            </div>
+            <button class="lf-modal-close" type="button" data-close-modal aria-label="Close dialog">×</button>
+        </div>
+        <div id="detail-content"></div>
+    </section>
+</div>
+
+<div class="lf-toast" id="lf-toast" role="status" aria-live="polite"></div>
+
+<script src="js/app.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/lost-found.js"></script>
+</body>
+</html>

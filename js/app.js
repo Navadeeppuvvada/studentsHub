@@ -25,6 +25,7 @@
             items: [
                 ["Announcements", "announcements.html", "◉"],
                 ["Events & Clubs", "events-clubs.html", "✳"],
+                ["Lost & Found", "lost-found.html", "⌕"],
                 ["Placement", "placement.html", "↗"],
                 ["Community", "community.html", "◎"]
             ]
