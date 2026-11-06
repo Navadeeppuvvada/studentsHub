@@ -1,0 +1,447 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StudentHub Peer Learning and Tutoring Platform">
+    <title>Peer Learning | StudentHub</title>
+
+    <link rel="stylesheet" href="css/peer-learning.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">S</div>
+            <div>
+                <h2>StudentHub</h2>
+                <span>YOUR ACADEMIC SPACE</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <p class="sidebar-label">MAIN MENU</p>
+
+            <a href="dashboard.html" class="nav-link">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="subjects.html" class="nav-link">
+                <i class="fa-solid fa-book"></i>
+                <span>Subjects</span>
+            </a>
+
+            <a href="study-materials.html" class="nav-link">
+                <i class="fa-solid fa-folder-open"></i>
+                <span>Study Materials</span>
+            </a>
+
+            <a href="assignments.html" class="nav-link">
+                <i class="fa-solid fa-file-pen"></i>
+                <span>Assignments</span>
+            </a>
+
+            <a href="attendance.html" class="nav-link">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>Attendance</span>
+            </a>
+
+            <a href="timetable.html" class="nav-link">
+                <i class="fa-solid fa-clock"></i>
+                <span>Timetable</span>
+            </a>
+        </div>
+
+        <div class="sidebar-section">
+            <p class="sidebar-label">STUDENT COMMUNITY</p>
+
+            <a href="community.html" class="nav-link">
+                <i class="fa-solid fa-users"></i>
+                <span>Community</span>
+            </a>
+
+            <a href="events.html" class="nav-link">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Events & Clubs</span>
+            </a>
+
+            <a href="peer-learning.html" class="nav-link active">
+                <i class="fa-solid fa-user-group"></i>
+                <span>Peer Learning</span>
+            </a>
+
+            <a href="lost-found.html" class="nav-link">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Lost & Found</span>
+            </a>
+        </div>
+
+        <div class="sidebar-section">
+            <p class="sidebar-label">CAREER</p>
+
+            <a href="placement.html" class="nav-link">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Placement</span>
+            </a>
+
+            <a href="career-arena.html" class="nav-link">
+                <i class="fa-solid fa-code"></i>
+                <span>Career & Coding Arena</span>
+            </a>
+        </div>
+
+        <div class="sidebar-bottom">
+            <a href="profile.html" class="nav-link">
+                <i class="fa-solid fa-user"></i>
+                <span>My Profile</span>
+            </a>
+
+            <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+                <h2>Peer Learning</h2>
+                <p>Learn together. Grow together.</p>
+            </div>
+
+            <div class="topbar-actions">
+                <button class="icon-btn" id="themeToggle" title="Toggle theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <button class="icon-btn" title="Notifications">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+
+                <div class="user-avatar" id="userAvatar">N</div>
+            </div>
+
+        </header>
+
+
+        <!-- PAGE CONTENT -->
+        <section class="page-container">
+
+            <!-- HERO -->
+            <section class="hero-section">
+
+                <div class="hero-content">
+                    <span class="eyebrow">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        STUDENT LEARNING COMMUNITY
+                    </span>
+
+                    <h1>Knowledge grows when<br>
+                        <span>we learn together.</span>
+                    </h1>
+
+                    <p>
+                        Connect with talented students, share your knowledge,
+                        solve doubts and build your learning community.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <button class="primary-btn" id="exploreBtn">
+                            <i class="fa-solid fa-compass"></i>
+                            Explore Tutors
+                        </button>
+
+                        <button class="secondary-btn" id="becomeTutorBtn">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                            Become a Tutor
+                        </button>
+                    </div>
+                </div>
+
+                <div class="hero-illustration">
+                    <div class="illustration-circle">
+                        <i class="fa-solid fa-people-group"></i>
+                    </div>
+                    <div class="floating-card float-one">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        Share Knowledge
+                    </div>
+                    <div class="floating-card float-two">
+                        <i class="fa-solid fa-book-open"></i>
+                        Learn Together
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- STATISTICS -->
+            <section class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <div>
+                        <h3 id="tutorCount">0</h3>
+                        <p>Available Tutors</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-people-group"></i>
+                    </div>
+                    <div>
+                        <h3 id="groupCount">0</h3>
+                        <p>Study Groups</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fa-solid fa-circle-question"></i>
+                    </div>
+                    <div>
+                        <h3 id="doubtCount">0</h3>
+                        <p>Open Doubts</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <div>
+                        <h3 id="sessionCount">0</h3>
+                        <p>My Sessions</p>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- NAVIGATION TABS -->
+            <section class="module-tabs">
+
+                <button class="tab-btn active" data-tab="tutors">
+                    <i class="fa-solid fa-users"></i> Find Tutors
+                </button>
+
+                <button class="tab-btn" data-tab="doubts">
+                    <i class="fa-solid fa-circle-question"></i> Help Requests
+                </button>
+
+                <button class="tab-btn" data-tab="groups">
+                    <i class="fa-solid fa-people-group"></i> Study Groups
+                </button>
+
+                <button class="tab-btn" data-tab="sessions">
+                    <i class="fa-solid fa-calendar"></i> My Sessions
+                </button>
+
+            </section>
+
+
+            <!-- FIND TUTORS -->
+            <section class="tab-panel active" id="tutors">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Find Your Learning Partner</h2>
+                        <p>Discover students who can help you master new subjects.</p>
+                    </div>
+
+                    <button class="primary-btn small-btn" id="openTutorForm">
+                        <i class="fa-solid fa-plus"></i> Register as Tutor
+                    </button>
+                </div>
+
+                <div class="filter-bar">
+
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="tutorSearch"
+                               placeholder="Search tutor, subject or skill...">
+                    </div>
+
+                    <select id="subjectFilter">
+                        <option value="all">All Subjects</option>
+                        <option value="Java">Java</option>
+                        <option value="Python">Python</option>
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="DBMS">DBMS</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Data Structures">Data Structures</option>
+                        <option value="AIML">AIML</option>
+                    </select>
+
+                    <select id="availabilityFilter">
+                        <option value="all">All Availability</option>
+                        <option value="Available">Available</option>
+                        <option value="Busy">Busy</option>
+                    </select>
+
+                </div>
+
+                <div class="tutor-grid" id="tutorGrid"></div>
+
+                <div class="empty-state hidden" id="tutorEmpty">
+                    <i class="fa-solid fa-user-slash"></i>
+                    <h3>No tutors found</h3>
+                    <p>Try another subject or search keyword.</p>
+                </div>
+
+            </section>
+
+
+            <!-- HELP REQUESTS -->
+            <section class="tab-panel" id="doubts">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Academic Help Requests</h2>
+                        <p>Have a doubt? Ask your fellow students for help.</p>
+                    </div>
+
+                    <button class="primary-btn small-btn" id="addDoubtBtn">
+                        <i class="fa-solid fa-plus"></i> Post a Doubt
+                    </button>
+                </div>
+
+                <div class="doubt-grid" id="doubtGrid"></div>
+
+                <div class="empty-state hidden" id="doubtEmpty">
+                    <i class="fa-solid fa-comments"></i>
+                    <h3>No help requests yet</h3>
+                    <p>Be the first to post a question.</p>
+                </div>
+
+            </section>
+
+
+            <!-- STUDY GROUPS -->
+            <section class="tab-panel" id="groups">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Collaborative Study Groups</h2>
+                        <p>Join communities that share your learning interests.</p>
+                    </div>
+
+                    <button class="primary-btn small-btn" id="createGroupBtn">
+                        <i class="fa-solid fa-plus"></i> Create Group
+                    </button>
+                </div>
+
+                <div class="group-grid" id="groupGrid"></div>
+
+                <div class="empty-state hidden" id="groupEmpty">
+                    <i class="fa-solid fa-people-group"></i>
+                    <h3>No study groups available</h3>
+                    <p>Create a new group and invite your classmates.</p>
+                </div>
+
+            </section>
+
+
+            <!-- MY SESSIONS -->
+            <section class="tab-panel" id="sessions">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>My Learning Sessions</h2>
+                        <p>Manage your tutoring appointments and learning activities.</p>
+                    </div>
+                </div>
+
+                <div class="session-list" id="sessionList"></div>
+
+                <div class="empty-state hidden" id="sessionEmpty">
+                    <i class="fa-solid fa-calendar-xmark"></i>
+                    <h3>No sessions scheduled</h3>
+                    <p>Book a tutor to start your learning journey.</p>
+                </div>
+
+            </section>
+
+
+            <!-- BOTTOM CTA -->
+            <section class="bottom-cta">
+                <div>
+                    <h2>Everyone has something to teach.</h2>
+                    <p>Share your skills and help another student succeed.</p>
+                </div>
+
+                <button class="secondary-btn" id="bottomTutorBtn">
+                    Start Teaching <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </section>
+
+            <footer class="page-footer">
+                © 2026 StudentHub. Learn Together. Grow Together.
+            </footer>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+            <div>
+                <h2 id="modalTitle">Add Details</h2>
+                <p id="modalSubtitle">Enter the required information.</p>
+            </div>
+
+            <button class="close-modal" id="closeModal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <form id="dynamicForm">
+            <div id="formFields"></div>
+
+            <button type="submit" class="primary-btn submit-btn">
+                Submit
+            </button>
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMessage">Success!</span>
+</div>
+
+
+<script src="js/peer-learning.js"></script>
+
+</body>
+</html>

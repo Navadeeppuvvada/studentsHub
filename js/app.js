@@ -17,7 +17,9 @@
                 ["Study Planner", "study-planner.html", "◷"],
                 ["Study Materials", "study-materials.html", "▧"],
                 ["Focus Room", "focus-room.html", "◉"],
-                ["Coding Arena", "career-arena.html", "⌘"]
+                ["Coding Arena", "career-arena.html", "⌘"],
+                ["Peer Connect", "peer-learning.html", "⌘"]
+
             ]
         },
         {
