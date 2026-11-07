@@ -142,3 +142,35 @@
         ? document.addEventListener("DOMContentLoaded", init)
         : init();
 })();
+document.addEventListener("DOMContentLoaded", () => {
+    const authButton = document.getElementById("auth-button");
+
+    if (!authButton) return;
+
+    function updateAuthButton() {
+        const session = sessionStorage.getItem("studentHubSession");
+
+        if (session) {
+            authButton.textContent = "Log Out";
+        } else {
+            authButton.textContent = "Sign In";
+        }
+    }
+
+    updateAuthButton();
+
+    authButton.addEventListener("click", () => {
+        const session = sessionStorage.getItem("studentHubSession");
+
+        if (session) {
+            // Logout
+            sessionStorage.removeItem("studentHubSession");
+            sessionStorage.removeItem("studentHubShowWelcome");
+
+            window.location.href = "login.html";
+        } else {
+            // Login
+            window.location.href = "login.html";
+        }
+    });
+});
