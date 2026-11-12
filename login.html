@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/style.css">
 
     <script src="js/theme.js" defer></script>
-    <script src="js/login.js" defer></script>
+    <script type="module" src="js/login.js"></script>
 </head>
 
 <body>
@@ -71,7 +71,7 @@
                 </p>
 
                 <form id="login-form" class="auth-form" novalidate>
-                   <div class="auth-message" id="auth-message" role="status"></div>
+                   <div class="auth-message" id="auth-message" role="status" aria-live="polite" hidden></div>
 
                     <div class="auth-field">
                         <label for="login-email">Email address</label>
@@ -114,7 +114,7 @@
                 </p>
 
                 <p class="auth-note">
-                    Demo prototype: this page validates your inputs locally. It does not verify credentials against a server or provide secure authentication.
+                    This JavaScript demo checks an account saved in this browser. No server or cloud database is used.
                 </p>
             </div>
         </section>

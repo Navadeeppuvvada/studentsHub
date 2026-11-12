@@ -45,6 +45,8 @@
 
     function init() {
         const sidebar = document.querySelector("[data-sidebar]");
+        const mobileSidebar = sidebar ||
+            document.querySelector("[data-mobile-sidebar]");
         const current = location.pathname.split("/").pop() || "index.html";
 
         if (sidebar) {
@@ -79,8 +81,8 @@
                 <div class="sidebar-bottom">
                     <span class="user-avatar">N</span>
                     <span class="user-meta">
-                        <strong>Navadeep</strong>
-                        <small>B.Tech Student</small>
+                        <strong data-user-name>Student account</strong>
+                        <small data-user-email>Sign in to sync your account</small>
                     </span>
                     <a class="icon-button"
                        href="settings.html"
@@ -104,21 +106,82 @@
 
         const menu = document.querySelector("[data-mobile-menu]");
 
-        if (menu && sidebar) {
+        if (menu && mobileSidebar) {
             menu.addEventListener("click", () => {
-                sidebar.classList.toggle("open");
+                const isOpen = mobileSidebar.classList.toggle("open");
+                menu.setAttribute("aria-expanded", String(isOpen));
             });
         }
 
         document.addEventListener("click", e => {
             if (
-                sidebar &&
-                sidebar.classList.contains("open") &&
-                !sidebar.contains(e.target) &&
+                mobileSidebar &&
+                mobileSidebar.classList.contains("open") &&
+                !mobileSidebar.contains(e.target) &&
                 !menu?.contains(e.target)
             ) {
-                sidebar.classList.remove("open");
+                mobileSidebar.classList.remove("open");
+                menu?.setAttribute("aria-expanded", "false");
             }
+        });
+
+        function updateAccountUI(user = readSession()) {
+            const name = user?.name || user?.displayName || "";
+            const email = user?.email || "";
+            const initial = (name || email || "S").trim().charAt(0).toUpperCase();
+
+            document.querySelectorAll("[data-user-name]").forEach(el => {
+                el.textContent = name || "Student account";
+            });
+            document.querySelectorAll("[data-user-email]").forEach(el => {
+                el.textContent = email || (name ? "Student account" : "Sign in to sync your account");
+            });
+            document.querySelectorAll(".avatar, .user-avatar").forEach(el => {
+                el.textContent = initial;
+            });
+
+            let authButton = document.querySelector("#auth-button, [data-auth-button]");
+            if (!authButton) {
+                const actions = document.querySelector(".topbar-actions");
+                if (actions) {
+                    authButton = document.createElement("button");
+                    authButton.className = "btn btn-quiet auth-action";
+                    authButton.type = "button";
+                    authButton.dataset.authButton = "";
+                    actions.prepend(authButton);
+                }
+            }
+
+            if (authButton) {
+                authButton.textContent = user ? "Sign out" : "Sign in";
+                authButton.setAttribute("aria-label", user ? "Sign out" : "Sign in");
+                if (!authButton.dataset.bound) {
+                    authButton.dataset.bound = "true";
+                    authButton.addEventListener("click", () => {
+                        if (typeof window.studentHubSignOut === "function") {
+                            window.studentHubSignOut();
+                        } else {
+                            sessionStorage.removeItem("studentHubSession");
+                            sessionStorage.removeItem("studentHubShowWelcome");
+                            window.location.href = "login.html";
+                        }
+                    });
+                }
+            }
+        }
+
+        function readSession() {
+            try {
+                return JSON.parse(sessionStorage.getItem("studentHubSession") || "null");
+            } catch (error) {
+                console.warn("Could not read the current StudentHub session.", error);
+                return null;
+            }
+        }
+
+        updateAccountUI();
+        window.addEventListener("studenthub:auth-change", event => {
+            updateAccountUI(event.detail?.user || null);
         });
 
         const toast = document.createElement("div");
@@ -136,41 +199,10 @@
                 toast.classList.remove("show");
             }, 2300);
         };
+
     }
 
     document.readyState === "loading"
         ? document.addEventListener("DOMContentLoaded", init)
         : init();
 })();
-document.addEventListener("DOMContentLoaded", () => {
-    const authButton = document.getElementById("auth-button");
-
-    if (!authButton) return;
-
-    function updateAuthButton() {
-        const session = sessionStorage.getItem("studentHubSession");
-
-        if (session) {
-            authButton.textContent = "Log Out";
-        } else {
-            authButton.textContent = "Sign In";
-        }
-    }
-
-    updateAuthButton();
-
-    authButton.addEventListener("click", () => {
-        const session = sessionStorage.getItem("studentHubSession");
-
-        if (session) {
-            // Logout
-            sessionStorage.removeItem("studentHubSession");
-            sessionStorage.removeItem("studentHubShowWelcome");
-
-            window.location.href = "login.html";
-        } else {
-            // Login
-            window.location.href = "login.html";
-        }
-    });
-});

@@ -69,10 +69,33 @@
                         </p>
                     </div>
 
-                    <button class="btn btn-primary" id="add-task">
+                    <button class="btn btn-primary" id="add-task" type="button" aria-expanded="false">
                         + Add task
                     </button>
                 </div>
+
+                <section class="card" id="task-editor" hidden>
+                    <form id="task-form" class="form-grid">
+                        <div class="form-field">
+                            <label for="task-title">Study task</label>
+                            <input class="field" id="task-title" name="title" maxlength="120" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="task-subject">Subject or category</label>
+                            <input class="field" id="task-subject" name="subject" maxlength="80">
+                        </div>
+                        <div class="form-field">
+                            <label for="task-due">Planned date (optional)</label>
+                            <input class="field" id="task-due" name="due" type="date">
+                        </div>
+                        <div class="form-field full">
+                            <div class="toolbar">
+                                <button class="btn btn-primary" type="submit">Save task</button>
+                                <button class="btn btn-secondary" id="cancel-task" type="button">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
 
                 <section class="card">
                     <div class="card-header">
@@ -103,7 +126,7 @@
                 <p class="footer-note">
                     StudentHub · Your academic space ·
                     <span data-year></span>
-                    · Demo data is stored in this browser only.
+                    · Study tasks are saved in this browser.
                 </p>
             </main>
         </div>

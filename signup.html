@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/style.css">
 
     <script src="js/theme.js" defer></script>
-    <script src="js/signup.js" defer></script>
+    <script type="module" src="js/signup.js"></script>
 </head>
 
 <body>
@@ -71,7 +71,7 @@
                 </p>
 
                 <form id="signup-form" class="auth-form" novalidate>
-                   <div class="auth-message" id="auth-message" role="status"></div>
+                    <div class="auth-message" id="auth-message" role="status" aria-live="polite" hidden></div>
                     <div class="auth-field">
                         <label for="signup-name">Full name</label>
 
@@ -132,7 +132,7 @@
                         <input id="signup-terms" type="checkbox" required>
 
                         <span class="auth-note" style="margin:0">
-                            I understand this is a front-end demo and my account is not protected by a server.
+                            I understand this demo account is stored only in this browser and is not a secure online account.
                         </span>
                     </label>
 
@@ -150,7 +150,7 @@
                 </p>
 
                 <p class="auth-note">
-                    For safety, this demo does not save your password. Do not enter a real or reused password.
+                    Passwords are stored as salted hashes in this browser. Use a unique password; this is not secure authentication for sensitive accounts.
                 </p>
             </div>
         </section>

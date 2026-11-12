@@ -35,9 +35,9 @@
                 </span>
 
                 <div class="topbar-actions">
-                    <button class="btn btn-quiet" id="logout-button" type="button">
-                  Log out
-                       </button>
+                    <button class="btn btn-quiet" id="auth-button" type="button">
+                        Sign out
+                    </button>
                     <button
                         class="theme-toggle"
                         data-theme-toggle
@@ -73,13 +73,14 @@
                 </div>
 
                 <section class="card">
+                    <div class="notice form-message" id="profile-message" role="status" aria-live="polite" hidden></div>
                     <form id="profile-form" class="form-grid">
                         <div class="form-field">
                             <label for="profile-name">Full name</label>
                             <input
                                 class="field"
                                 id="profile-name"
-                                value="Navadeep"
+                                maxlength="80"
                                 required
                             >
                         </div>
@@ -89,7 +90,7 @@
                             <input
                                 class="field"
                                 id="profile-course"
-                                value="B.Tech"
+                                maxlength="100"
                             >
                         </div>
 
@@ -98,7 +99,7 @@
                             <input
                                 class="field"
                                 id="profile-university"
-                                value="KL University"
+                                maxlength="120"
                             >
                         </div>
 
@@ -108,7 +109,7 @@
                                 class="field"
                                 id="profile-email"
                                 type="email"
-                                placeholder="student@example.com"
+                                autocomplete="email"
                             >
                         </div>
 
@@ -121,6 +122,7 @@
                                 class="textarea"
                                 id="profile-goal"
                                 rows="3"
+                                maxlength="300"
                                 placeholder="e.g. Strengthen Java and DSA fundamentals"
                             ></textarea>
                         </div>
@@ -139,7 +141,7 @@
                 <p class="footer-note">
                     StudentHub · Your academic space ·
                     <span data-year></span>
-                    · Demo data is stored in this browser only.
+                    · Profile changes last for this browser session.
                 </p>
             </main>
         </div>

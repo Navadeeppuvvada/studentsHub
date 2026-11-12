@@ -874,6 +874,29 @@ a {
     padding: 28px 0 10px;
 }
 
+.demo-notice {
+    margin-bottom: 20px;
+    padding: 12px 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.topbar .mobile-menu {
+    display: none;
+}
+
+.topbar-actions .auth-action {
+    padding: 9px 13px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 12px;
+}
+
 
 /* MODAL */
 
@@ -1052,7 +1075,49 @@ a {
     }
 
     .sidebar {
-        display: none;
+        position: fixed;
+        z-index: 20;
+        inset: 0 auto 0 0;
+        display: flex;
+        width: min(280px, 86vw);
+        height: 100vh;
+        padding: 22px 16px;
+        transform: translateX(-105%);
+        transition: transform .2s ease;
+        box-shadow: var(--shadow);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar .brand {
+        justify-content: flex-start;
+        padding: 0 9px 24px;
+    }
+
+    .sidebar .brand > div:last-child,
+    .sidebar .nav-link span,
+    .sidebar     .sidebar-label {
+        display: block;
+    }
+
+    .sidebar .brand > div:last-child {
+        display: block;
+    }
+
+    .sidebar .nav-link {
+        justify-content: flex-start;
+        padding: 12px;
+    }
+
+    .topbar .mobile-menu {
+        display: grid;
+        flex: 0 0 39px;
+    }
+
+    .topbar-actions {
+        gap: 8px;
     }
 
     .topbar {

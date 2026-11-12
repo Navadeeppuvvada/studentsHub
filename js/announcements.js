@@ -2,32 +2,39 @@
 document.addEventListener("DOMContentLoaded", () => {
     const key = "studenthub-announcements-read";
 
-    let read = JSON.parse(localStorage.getItem(key) || "[]");
+    let read = [];
+    try {
+        const saved = JSON.parse(localStorage.getItem(key) || "[]");
+        if (Array.isArray(saved)) read = saved.filter(Number.isInteger);
+    } catch (error) {
+        console.error("Could not load announcement read state.", error);
+        showToast("Announcement read states could not be loaded.");
+    }
 
     const data = [
         [
             "EXAM",
             "Mid-semester examination schedule",
             "Check the official ERP for the latest schedule and room details.",
-            "Today"
+            "Example notice"
         ],
         [
             "ACADEMIC",
             "Assignment submission reminder",
             "Review upcoming deadlines and submit work before the due date.",
-            "Yesterday"
+            "Example notice"
         ],
         [
             "CAMPUS",
             "AI & Future Technologies workshop",
             "Workshop registration details will be shared by the organizing team.",
-            "This week"
+            "Example notice"
         ],
         [
             "PLACEMENT",
             "Career preparation session",
             "Bring your updated resume and prepare a short introduction.",
-            "This week"
+            "Example notice"
         ]
     ];
 
@@ -55,8 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         ${x[3]}
                     </small>
 
-                    <button class="btn btn-secondary" data-read="${i}">
-                        ${read.includes(i) ? 'Read ✓' : 'Mark as read'}
+                    <button class="btn btn-secondary" data-read="${i}" aria-pressed="${read.includes(i)}">
+                        ${read.includes(i) ? 'Mark as unread' : 'Mark as read'}
                     </button>
                 </div>
             </article>
@@ -65,22 +72,35 @@ document.addEventListener("DOMContentLoaded", () => {
         grid.querySelectorAll("[data-read]").forEach(b => {
             b.addEventListener("click", () => {
                 const i = +b.dataset.read;
-
-                if (!read.includes(i)) {
-                    read.push(i);
+                const previous = read.slice();
+                read = read.includes(i)
+                    ? read.filter(item => item !== i)
+                    : [...read, i];
+                try {
+                    localStorage.setItem(key, JSON.stringify(read));
+                } catch (error) {
+                    read = previous;
+                    console.error("Could not save announcement read state.", error);
+                    showToast("Could not save this read state. Check browser storage.");
+                    return;
                 }
-
-                localStorage.setItem(key, JSON.stringify(read));
-
                 render();
             });
         });
     }
 
     document.getElementById("read-all").addEventListener("click", () => {
+        const previous = read.slice();
         read = data.map((_, i) => i);
 
-        localStorage.setItem(key, JSON.stringify(read));
+        try {
+            localStorage.setItem(key, JSON.stringify(read));
+        } catch (error) {
+            read = previous;
+            console.error("Could not save announcement read state.", error);
+            showToast("Could not save read states. Check browser storage.");
+            return;
+        }
 
         render();
 

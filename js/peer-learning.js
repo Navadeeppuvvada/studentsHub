@@ -22,11 +22,17 @@ document.addEventListener("DOMContentLoaded", () => {
     let toastTimer;
 
     // Change this to your logged-in user's name if available.
-    const currentUser =
-        JSON.parse(localStorage.getItem("studentHubSession") || "null");
+    let currentUser = null;
+    try {
+        currentUser = JSON.parse(
+            sessionStorage.getItem("studentHubSession") || "null"
+        );
+    } catch (error) {
+        console.warn("Could not read the current StudentHub session.", error);
+    }
 
     const studentName =
-        currentUser?.name || "Navadeep";
+        currentUser?.name || currentUser?.displayName || "Student";
 
     const studentInitial =
         studentName.charAt(0).toUpperCase();
@@ -1267,44 +1273,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
         });
-
-
-    // =====================================
-    // THEME TOGGLE
-    // Compatible with existing theme.js
-    // =====================================
-
-    const themeToggle = document.getElementById("themeToggle");
-
-    function applyTheme(theme) {
-
-        document.documentElement.setAttribute("data-theme", theme);
-
-        const icon = themeToggle.querySelector("i");
-
-        icon.className = theme === "dark"
-            ? "fa-solid fa-moon"
-            : "fa-solid fa-sun";
-    }
-
-
-    const savedTheme = localStorage.getItem("theme") || "dark";
-
-    applyTheme(savedTheme);
-
-    themeToggle.addEventListener("click", () => {
-
-        const currentTheme =
-            document.documentElement.getAttribute("data-theme");
-
-        const newTheme =
-            currentTheme === "dark" ? "light" : "dark";
-
-        localStorage.setItem("theme", newTheme);
-
-        applyTheme(newTheme);
-
-    });
 
 
     // =====================================

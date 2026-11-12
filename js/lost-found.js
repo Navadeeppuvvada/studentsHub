@@ -29,57 +29,6 @@
         "Other": "◈"
     };
 
-    const sampleReports = [
-        {
-            id: "sample-1",
-            type: "lost",
-            name: "Black wireless earbuds",
-            category: "Electronics",
-            location: "Central Library, second floor",
-            date: "2026-10-27",
-            description: "Small black earbuds in a charging case. May have been left near the study tables.",
-            contactName: "Demo Student",
-            contactMethod: "Demo listing — replace with a real report",
-            image: "",
-            status: "open",
-            ownerId: "demo",
-            createdAt: "2026-10-27T09:30:00.000Z",
-            demo: true
-        },
-        {
-            id: "sample-2",
-            type: "found",
-            name: "Blue water bottle",
-            category: "Water Bottles",
-            location: "Outside the cafeteria",
-            date: "2026-10-28",
-            description: "A blue reusable bottle was found on a bench outside the cafeteria.",
-            contactName: "Demo Student",
-            contactMethod: "Demo listing — replace with a real report",
-            image: "",
-            status: "open",
-            ownerId: "demo",
-            createdAt: "2026-10-28T08:00:00.000Z",
-            demo: true
-        },
-        {
-            id: "sample-3",
-            type: "lost",
-            name: "Engineering notebook",
-            category: "Books & Notes",
-            location: "Academic block, room corridor",
-            date: "2026-10-25",
-            description: "A notebook with handwritten engineering class notes. Please contact me if found.",
-            contactName: "Demo Student",
-            contactMethod: "Demo listing — replace with a real report",
-            image: "",
-            status: "open",
-            ownerId: "demo",
-            createdAt: "2026-10-25T11:00:00.000Z",
-            demo: true
-        }
-    ];
-
     function createId() {
         return `lf-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
     }
@@ -112,6 +61,14 @@
         });
     }
 
+    function localDateKey(date = new Date()) {
+        return [
+            date.getFullYear(),
+            String(date.getMonth() + 1).padStart(2, "0"),
+            String(date.getDate()).padStart(2, "0")
+        ].join("-");
+    }
+
     function getStatusLabel(status) {
         return ({
             open: "Open",
@@ -135,11 +92,10 @@
             if (stored !== null) {
                 const parsed = JSON.parse(stored);
                 reports = Array.isArray(parsed)
-                    ? parsed.filter(validReport)
+                    ? parsed.filter(report => validReport(report) && !report.demo)
                     : [];
             } else {
-                // These examples are local demo data, not real campus reports.
-                reports = JSON.parse(JSON.stringify(sampleReports));
+                reports = [];
                 saveReports();
             }
         } catch (error) {
@@ -379,21 +335,12 @@
 
         updateTypeFields(type);
 
-        // Prefill from an existing StudentHub profile/session when available.
+        // Prefill from the active session when available.
         try {
-            const users = JSON.parse(localStorage.getItem("studentHubUsers") || "[]");
             const session = JSON.parse(sessionStorage.getItem("studentHubSession") || "null");
-
-            const currentUser = Array.isArray(users) && session
-                ? users.find(user =>
-                    user.email && session.email &&
-                    user.email.toLowerCase() === session.email.toLowerCase()
-                )
-                : null;
-
-            if (currentUser) {
-                $("#contact-name").value = currentUser.name || "";
-                $("#contact-method").value = currentUser.email || "";
+            if (session) {
+                $("#contact-name").value = session.name || session.displayName || "";
+                $("#contact-method").value = session.email || "";
             }
         } catch {
             // Profile data is optional; the student can fill in the fields manually.
@@ -534,7 +481,7 @@
             return;
         }
 
-        if (date > new Date().toLocaleDateString("en-CA")) {
+        if (date > localDateKey()) {
             $("#form-message").textContent = "The report date cannot be in the future.";
             return;
         }
@@ -627,10 +574,6 @@
                 ${!mine && !report.demo ? `
                     <button class="lf-button lf-button-primary" data-detail-action="contact"
                             data-id="${escapeHTML(report.id)}">Contact poster</button>
-                    ${report.status === "open" ? `
-                        <button class="lf-button lf-button-secondary" data-detail-action="claim"
-                                data-id="${escapeHTML(report.id)}">Mark as claimed</button>
-                    ` : ""}
                 ` : ""}
 
                 ${mine ? `
@@ -672,28 +615,6 @@
         renderAll();
         openDetails(id);
         showToast(`Status updated to ${getStatusLabel(status)}.`);
-    }
-
-    function claimReport(id) {
-        const report = reports.find(item => item.id === id);
-
-        if (!report || report.demo) {
-            showToast("This is a demo report. No action was taken.");
-            return;
-        }
-
-        // A claim is a status change, not proof of ownership or a transfer.
-        const previousStatus = report.status;
-        report.status = "claimed";
-
-        if (!saveReports()) {
-            report.status = previousStatus;
-            return;
-        }
-
-        closeModal($("#detail-modal"));
-        renderAll();
-        showToast("Marked as claimed. Coordinate with the poster to verify the item.");
     }
 
     function deleteReport(id) {
@@ -751,8 +672,6 @@
         }
 
         if (action === "delete") deleteReport(id);
-
-        if (action === "claim") claimReport(id);
 
         if (action === "contact") {
             if (report.demo) {

@@ -33,15 +33,7 @@
             { id: "q15", category: "HR", text: "Why should we hire you for this role?", done: false },
             { id: "q16", category: "HR", text: "What are your strengths and what are you improving?", done: false }
         ],
-        skills: [
-            { id: "s1", name: "Java", level: 2 },
-            { id: "s2", name: "Data Structures & Algorithms", level: 2 },
-            { id: "s3", name: "HTML & CSS", level: 3 },
-            { id: "s4", name: "JavaScript", level: 2 },
-            { id: "s5", name: "React", level: 1 },
-            { id: "s6", name: "SQL / DBMS", level: 1 },
-            { id: "s7", name: "Communication", level: 2 }
-        ],
+        skills: [],
         resume: {
             items: [
                 { id: "r1", text: "Contact information is up to date", done: false },
@@ -211,7 +203,7 @@
         $("#stat-dsa").textContent = dsaDone;
         $("#stat-challenges").textContent = `${challengePercent}%`;
         $("#stat-questions").textContent = practicedQuestions;
-        $("#stat-skills").textContent = `${skillPercent}%`;
+        $("#stat-skills").textContent = state.skills.length ? `${skillPercent}%` : "—";
 
         $("#dsa-count-label").textContent =
             `${dsaDone} of ${state.dsa.length} problems completed`;
@@ -376,6 +368,11 @@
     }
 
     function renderSkills() {
+        if (!state.skills.length) {
+            $("#skills-list").innerHTML = '<p class="empty">Add a skill to start your self-assessment.</p>';
+            return;
+        }
+
         $("#skills-list").innerHTML = state.skills.map(skill => {
             const level = Math.min(4, Math.max(1, Number(skill.level) || 1));
 

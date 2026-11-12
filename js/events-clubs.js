@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "Workshop",
             "Build with AI: Intro Workshop",
             "Explore practical AI tools with fellow students.",
-            "24 Oct",
+            "Date to be announced",
             "✦"
         ],
         [
@@ -19,14 +19,14 @@ document.addEventListener("DOMContentLoaded", () => {
             "Career",
             "Resume & Interview Lab",
             "Practice introductions and get feedback on your resume.",
-            "28 Oct",
+            "Date to be announced",
             "↗"
         ],
         [
             "Workshop",
             "UI/UX Design Sprint",
             "Learn the basics of wireframes and user flows.",
-            "30 Oct",
+            "Date to be announced",
             "◈"
         ]
     ];
@@ -36,7 +36,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const filter = document.getElementById("event-filter");
     const key = "studenthub-event-registrations";
 
-    let registered = JSON.parse(localStorage.getItem(key) || "[]");
+    let registered = [];
+    try {
+        const saved = JSON.parse(localStorage.getItem(key) || "[]");
+        if (Array.isArray(saved)) registered = saved.filter(index =>
+            Number.isInteger(index) && index >= 0 && index < data.length
+        );
+    } catch (error) {
+        console.error("Could not load saved event interests.", error);
+        showToast("Saved event interests could not be loaded.");
+    }
 
     function render() {
         const q = search.value.toLowerCase();
@@ -72,12 +81,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                     : 'btn-primary'
                             }"
                             data-register="${x.i}"
-                            ${registered.includes(x.i) ? 'disabled' : ''}
                         >
                             ${
                                 registered.includes(x.i)
-                                    ? 'Registered ✓'
-                                    : 'Register'
+                                    ? 'Interest saved · remove'
+                                    : 'Save interest'
                             }
                         </button>
                     </div>
@@ -87,13 +95,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
         grid.querySelectorAll("[data-register]").forEach(b => {
             b.addEventListener("click", () => {
-                registered.push(+b.dataset.register);
+                const index = +b.dataset.register;
+                const hadInterest = registered.includes(index);
+                registered = hadInterest
+                    ? registered.filter(item => item !== index)
+                    : [...registered, index];
 
-                localStorage.setItem(key, JSON.stringify(registered));
+                try {
+                    localStorage.setItem(key, JSON.stringify(registered));
+                } catch (error) {
+                    registered = hadInterest
+                        ? [...registered, index]
+                        : registered.filter(item => item !== index);
+                    console.error("Could not save event interest.", error);
+                    showToast("Could not save your interest. Check browser storage.");
+                    return;
+                }
 
                 render();
 
-                showToast("Registration saved in this browser");
+                showToast(hadInterest
+                    ? "Saved interest removed"
+                    : "Interest saved in this browser");
             });
         });
     }

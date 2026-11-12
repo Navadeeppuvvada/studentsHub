@@ -1,19 +1,13 @@
-
 document.addEventListener("DOMContentLoaded", () => {
-    // Use the same storage key as login.js
     let currentUser = null;
-
     try {
-        currentUser = JSON.parse(
-            sessionStorage.getItem("studentHubSession") || "null"
-        );
+        currentUser = JSON.parse(sessionStorage.getItem("studentHubSession") || "null");
     } catch (error) {
         console.error("Could not read the current session.", error);
     }
 
-    // Redirect only if no valid session exists
     if (!currentUser || !currentUser.email) {
-        window.location.replace("login.html");
+        location.replace("login.html");
         return;
     }
 
@@ -23,66 +17,64 @@ document.addEventListener("DOMContentLoaded", () => {
     const universityInput = document.getElementById("profile-university");
     const goalInput = document.getElementById("profile-goal");
     const profileForm = document.getElementById("profile-form");
+    const messageBox = document.getElementById("profile-message");
+    const saveButton = profileForm.querySelector('[type="submit"]');
 
-    const getName = user => user.name || user.fullName || "Student";
+    nameInput.value = currentUser.name || "";
+    emailInput.value = currentUser.email;
+    courseInput.value = currentUser.course || "";
+    universityInput.value = currentUser.university || "";
+    goalInput.value = currentUser.goal || "";
 
-    // Load the current user's details
-    if (nameInput) nameInput.value = getName(currentUser);
-    if (emailInput) emailInput.value = currentUser.email;
-
-    // Keep the existing profile defaults
-    if (courseInput) courseInput.value = currentUser.course || "B.Tech";
-    if (universityInput) {
-        universityInput.value = currentUser.university || "KL University";
+    function showMessage(message, success = false) {
+        messageBox.textContent = message;
+        messageBox.classList.toggle("success", success);
+        messageBox.hidden = !message;
     }
-    if (goalInput) goalInput.value = currentUser.goal || "";
 
-    // Update avatars and sidebar name wherever they exist
     function updateUserDisplay(name) {
         const initial = name.trim().charAt(0).toUpperCase() || "S";
-
-        document.querySelectorAll(".avatar, .sidebar-avatar").forEach(element => {
+        document.querySelectorAll(".avatar, .sidebar-avatar, .user-avatar").forEach(element => {
             element.textContent = initial;
         });
-
-        document.querySelectorAll(".sidebar-user strong").forEach(element => {
+        document.querySelectorAll("[data-user-name], .sidebar-user strong").forEach(element => {
             element.textContent = name;
         });
     }
 
-    updateUserDisplay(getName(currentUser));
+    updateUserDisplay(currentUser.name || "Student");
 
-    // Save editable profile details for this session
-    profileForm?.addEventListener("submit", event => {
+    profileForm.addEventListener("submit", event => {
         event.preventDefault();
-
         const name = nameInput.value.trim();
-        const email = emailInput.value.trim();
-
-        if (!name || !email) {
-            alert("Please enter your name and email.");
+        const email = emailInput.value.trim().toLowerCase();
+        if (name.length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            showMessage("Enter your name and a valid email address.");
             return;
         }
 
-        currentUser.name = name;
-        currentUser.email = email;
-        currentUser.course = courseInput?.value.trim() || "B.Tech";
-        currentUser.university =
-            universityInput?.value.trim() || "KL University";
-        currentUser.goal = goalInput?.value.trim() || "";
-
-        sessionStorage.setItem(
-            "studentHubSession",
-            JSON.stringify(currentUser)
-        );
-
-        updateUserDisplay(name);
-        alert("Profile updated successfully!");
-    });
-
-    // Logout
-    document.getElementById("logout-button")?.addEventListener("click", () => {
-        sessionStorage.removeItem("studentHubSession");
-        window.location.replace("login.html");
+        const updatedUser = {
+            ...currentUser,
+            name,
+            email,
+            course: courseInput.value.trim(),
+            university: universityInput.value.trim(),
+            goal: goalInput.value.trim()
+        };
+        saveButton.disabled = true;
+        try {
+            sessionStorage.setItem("studentHubSession", JSON.stringify(updatedUser));
+            currentUser = updatedUser;
+            updateUserDisplay(name);
+            window.dispatchEvent(new CustomEvent("studenthub:auth-change", {
+                detail: { user: updatedUser }
+            }));
+            showMessage("Profile saved for this browser session.", true);
+        } catch (error) {
+            console.error("Could not save the profile for this session.", error);
+            showMessage("Could not save your profile. Check browser storage.");
+        } finally {
+            saveButton.disabled = false;
+        }
     });
 });

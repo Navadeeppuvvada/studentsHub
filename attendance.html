@@ -67,22 +67,61 @@
                             Keep track of attendance against the 75% target.
                         </p>
                     </div>
+                    <button class="btn btn-primary" id="add-attendance" type="button" aria-expanded="false">
+                        + Add attendance
+                    </button>
                 </div>
 
-                <div class="notice">
-                    Demo figures only. Replace them with your actual attendance records.
+                <p class="notice" id="attendance-sample-note" role="note">
+                    Starter attendance values are examples, not your actual record. Update each subject or remove it and enter your own counts.
+                </p>
+
+                <section class="card" id="attendance-editor" hidden>
+                    <form id="attendance-form" class="form-grid">
+                        <div class="form-field">
+                            <label for="attendance-subject">Subject</label>
+                            <input class="field" id="attendance-subject" name="subject" list="attendance-subject-options" maxlength="80" required>
+                            <datalist id="attendance-subject-options"></datalist>
+                        </div>
+                        <div class="form-field">
+                            <label for="classes-attended">Classes attended</label>
+                            <input class="field" id="classes-attended" name="attended" type="number" min="0" step="1" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="classes-total">Classes held</label>
+                            <input class="field" id="classes-total" name="total" type="number" min="1" step="1" required>
+                        </div>
+                        <div class="form-field full">
+                            <div class="toolbar">
+                                <button class="btn btn-primary" type="submit">Save attendance</button>
+                                <button class="btn btn-secondary" id="cancel-attendance" type="button">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <div class="stat-top">Overall attendance</div>
+                        <div class="stat-value" id="attendance-average">—</div>
+                        <div class="stat-note" id="attendance-summary-note">Weighted across your recorded classes</div>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-top">Subjects tracked</div>
+                        <div class="stat-value" id="attendance-subject-count">0</div>
+                        <div class="stat-note">Your own entries in this browser</div>
+                    </article>
                 </div>
 
                 <div
                     class="content-grid"
                     id="attendance-grid"
-                    style="margin-top:18px"
                 ></div>
 
                 <p class="footer-note">
                     StudentHub · Your academic space ·
                     <span data-year></span>
-                    · Demo data is stored in this browser only.
+                    · Attendance records are saved in this browser.
                 </p>
             </main>
         </div>

@@ -73,21 +73,41 @@
                     </button>
                 </div>
 
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <div class="stat-top">Upcoming items</div>
+                        <div class="stat-value" id="total-notifications">0</div>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-top">Unread</div>
+                        <div class="stat-value" id="unread-notifications">0</div>
+                    </article>
+                </div>
+
                 <div class="toolbar">
-                    <select class="select" id="notification-filter">
+                    <select class="select" id="read-filter" aria-label="Filter by read status">
                         <option value="all">All notifications</option>
                         <option value="unread">Unread only</option>
+                        <option value="read">Read only</option>
+                    </select>
+                    <select class="select" id="category-filter" aria-label="Filter notification type">
+                        <option value="all">All types</option>
+                        <option value="Assignments">Assignments</option>
+                        <option value="Study planner">Study planner</option>
                     </select>
                 </div>
 
                 <div class="card">
                     <div class="stack" id="notification-list"></div>
+                    <p class="empty" id="notifications-empty" hidden>
+                        No upcoming reminders yet. Add due dates to your assignments or study plan.
+                    </p>
                 </div>
 
                 <p class="footer-note">
                     StudentHub · Your academic space ·
                     <span data-year></span>
-                    · Demo data is stored in this browser only.
+                    · Reminders are generated from your browser-saved tasks.
                 </p>
             </main>
         </div>

@@ -68,22 +68,61 @@
                         </p>
                     </div>
 
-                    <button class="btn btn-secondary" id="today-btn">
+                    <div class="toolbar">
+                    <button class="btn btn-secondary" id="today-btn" type="button">
                         Today
                     </button>
+                    <button class="btn btn-primary" id="add-class" type="button" aria-expanded="false">
+                        + Add class
+                    </button>
+                    </div>
                 </div>
+
+                <p class="notice" id="timetable-sample-note" role="note">
+                    Starter class times and rooms are examples, not your actual schedule. Remove them and add your own timetable entries.
+                </p>
 
                 <div
                     class="toolbar"
                     id="day-tabs"
                 ></div>
 
+                <section class="card" id="class-editor" hidden>
+                    <form id="class-form" class="form-grid">
+                        <div class="form-field">
+                            <label for="class-day">Day</label>
+                            <select class="select" id="class-day" name="day" required>
+                                <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+                                <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="class-time">Start time</label>
+                            <input class="field" id="class-time" name="time" type="time" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="class-subject">Subject or activity</label>
+                            <input class="field" id="class-subject" name="subject" maxlength="80" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="class-location">Location (optional)</label>
+                            <input class="field" id="class-location" name="location" maxlength="100">
+                        </div>
+                        <div class="form-field full">
+                            <div class="toolbar">
+                                <button class="btn btn-primary" type="submit">Save class</button>
+                                <button class="btn btn-secondary" id="cancel-class" type="button">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
                 <section class="card">
                     <div class="card-header">
                         <h2 id="day-title">Monday schedule</h2>
 
                         <span class="pill">
-                            Semester timetable · Demo
+                            Weekly schedule
                         </span>
                     </div>
 
@@ -96,7 +135,7 @@
                 <p class="footer-note">
                     StudentHub · Your academic space ·
                     <span data-year></span>
-                    · Demo data is stored in this browser only.
+                    · Timetable entries are saved in this browser.
                 </p>
             </main>
         </div>

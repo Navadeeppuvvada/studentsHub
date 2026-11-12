@@ -17,7 +17,7 @@
 <div class="app-shell">
 
     <!-- SIDEBAR -->
-    <aside class="sidebar">
+    <aside class="sidebar" data-mobile-sidebar>
 
         <div class="brand">
             <div class="brand-logo">S</div>
@@ -30,7 +30,7 @@
         <div class="sidebar-section">
             <p class="sidebar-label">MAIN MENU</p>
 
-            <a href="dashboard.html" class="nav-link">
+            <a href="index.html" class="nav-link">
                 <i class="fa-solid fa-house"></i>
                 <span>Dashboard</span>
             </a>
@@ -69,7 +69,7 @@
                 <span>Community</span>
             </a>
 
-            <a href="events.html" class="nav-link">
+            <a href="events-clubs.html" class="nav-link">
                 <i class="fa-solid fa-calendar-days"></i>
                 <span>Events & Clubs</span>
             </a>
@@ -109,6 +109,11 @@
                 <i class="fa-solid fa-gear"></i>
                 <span>Settings</span>
             </a>
+
+            <a href="about.html" class="nav-link">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>About StudentHub</span>
+            </a>
         </div>
 
     </aside>
@@ -120,21 +125,29 @@
         <!-- TOPBAR -->
         <header class="topbar">
 
+            <button class="icon-btn mobile-menu" data-mobile-menu
+                    type="button" aria-label="Open navigation"
+                    aria-expanded="false">☰</button>
+
             <div>
                 <h2>Peer Learning</h2>
                 <p>Learn together. Grow together.</p>
             </div>
 
             <div class="topbar-actions">
-                <button class="icon-btn" id="themeToggle" title="Toggle theme">
+                <button class="icon-btn" data-theme-toggle
+                        type="button" aria-label="Switch theme"
+                        title="Switch theme">
                     <i class="fa-solid fa-moon"></i>
                 </button>
 
-                <button class="icon-btn" title="Notifications">
+                <a class="icon-btn" href="notifications.html" title="Notifications"
+                   aria-label="Notifications">
                     <i class="fa-regular fa-bell"></i>
-                </button>
+                </a>
 
-                <div class="user-avatar" id="userAvatar">N</div>
+                <a class="user-avatar" id="userAvatar" href="profile.html"
+                   aria-label="My profile">S</a>
             </div>
 
         </header>
@@ -142,6 +155,10 @@
 
         <!-- PAGE CONTENT -->
         <section class="page-container">
+            <p class="demo-notice" role="note">
+                Peer profiles, groups, and requests are sample data for this browser only.
+                Items you create are not shared with other students.
+            </p>
 
             <!-- HERO -->
             <section class="hero-section">
@@ -441,7 +458,9 @@
 </div>
 
 
-<script src="js/peer-learning.js"></script>
+<script src="js/app.js" defer></script>
+<script src="js/theme.js" defer></script>
+<script src="js/peer-learning.js" defer></script>
 
 </body>
 </html>

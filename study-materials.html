@@ -69,15 +69,51 @@
                         </p>
                     </div>
 
-                    <button class="btn btn-primary" id="add-material">
+                    <button class="btn btn-primary" id="add-material" type="button" aria-expanded="false">
                         + Add resource
                     </button>
                 </div>
+
+                <p class="notice" id="materials-sample-note" role="note">
+                    These starter links point to public learning references. They are examples, not your personal course materials; remove or add resources as needed.
+                </p>
+
+                <section class="card" id="material-editor" hidden>
+                    <form id="material-form" class="form-grid">
+                        <div class="form-field">
+                            <label for="material-title">Resource title</label>
+                            <input class="field" id="material-title" name="title" maxlength="120" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="material-subject">Subject or category</label>
+                            <input class="field" id="material-subject" name="subject" maxlength="80" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="material-kind">Type</label>
+                            <select class="select" id="material-kind" name="type">
+                                <option>Notes</option><option>Video</option>
+                                <option>Documentation</option><option>Practice</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="material-url">Resource URL</label>
+                            <input class="field" id="material-url" name="url" type="url" placeholder="https://example.com" required>
+                        </div>
+                        <div class="form-field full">
+                            <div class="toolbar">
+                                <button class="btn btn-primary" type="submit">Save resource</button>
+                                <button class="btn btn-secondary" id="cancel-material" type="button">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
 
                 <div class="toolbar">
                     <input
                         class="field"
                         id="material-search"
+                        type="search"
+                        aria-label="Search study materials"
                         placeholder="Search title or subject..."
                     >
 
@@ -98,7 +134,7 @@
                 <p class="footer-note">
                     StudentHub · Your academic space ·
                     <span data-year></span>
-                    · Demo data is stored in this browser only.
+                    · Resources are saved in this browser.
                 </p>
             </main>
         </div>

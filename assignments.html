@@ -68,31 +68,54 @@
                         </p>
                     </div>
 
-                    <button class="btn btn-primary" id="add-assignment">
+                    <button class="btn btn-primary" id="add-assignment" type="button" aria-expanded="false">
                         + Add assignment
                     </button>
                 </div>
 
+                <section class="card" id="assignment-editor" hidden>
+                    <form id="assignment-form" class="form-grid">
+                        <div class="form-field">
+                            <label for="assignment-title">Assignment title</label>
+                            <input class="field" id="assignment-title" name="title" maxlength="120" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="assignment-subject">Subject</label>
+                            <input class="field" id="assignment-subject" name="subject" maxlength="80" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="assignment-due">Due date</label>
+                            <input class="field" id="assignment-due" name="due" type="date" required>
+                        </div>
+                        <div class="form-field full">
+                            <div class="toolbar">
+                                <button class="btn btn-primary" type="submit">Save assignment</button>
+                                <button class="btn btn-secondary" id="cancel-assignment" type="button">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
                 <div class="stats-grid">
                     <article class="stat-card">
                         <div class="stat-top">Total tasks</div>
-                        <div class="stat-value" id="total-count">04</div>
+                        <div class="stat-value" id="total-count">—</div>
                     </article>
 
                     <article class="stat-card">
                         <div class="stat-top">Pending</div>
-                        <div class="stat-value" id="pending-count">03</div>
+                        <div class="stat-value" id="pending-count">—</div>
                     </article>
 
                     <article class="stat-card">
                         <div class="stat-top">Completed</div>
-                        <div class="stat-value" id="completed-count">01</div>
+                        <div class="stat-value" id="completed-count">—</div>
                     </article>
 
                     <article class="stat-card">
                         <div class="stat-top">Next deadline</div>
-                        <div class="stat-value" style="font-size:21px">
-                            20 Oct
+                        <div class="stat-value" id="next-deadline" style="font-size:21px">
+                            —
                         </div>
                     </article>
                 </div>
@@ -130,7 +153,7 @@
                 <p class="footer-note">
                     StudentHub · Your academic space ·
                     <span data-year></span>
-                    · Demo data is stored in this browser only.
+                    · Assignments are saved in this browser.
                 </p>
             </main>
         </div>

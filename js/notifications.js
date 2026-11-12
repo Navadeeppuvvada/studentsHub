@@ -1,162 +1,150 @@
-
 document.addEventListener("DOMContentLoaded", () => {
-  const storageKey = "studenthub-notification-read-v1";
+    const storageKey = "studenthub-notification-read-v1";
+    const list = document.getElementById("notification-list");
+    const empty = document.getElementById("notifications-empty");
+    const readFilter = document.getElementById("read-filter");
+    const categoryFilter = document.getElementById("category-filter");
+    let readIds = [];
 
-  const notifications = [
-    {
-      id: "n1",
-      title: "Assignment deadline approaching",
-      message: "Your Binary Search Tree exercises are due on 20 October.",
-      category: "Assignments",
-      date: "2026-10-16",
-    },
-    {
-      id: "n2",
-      title: "Attendance reminder",
-      message: "Review your subject-wise attendance and check for any classes that need attention.",
-      category: "Academic",
-      date: "2026-10-16",
-    },
-    {
-      id: "n3",
-      title: "Study materials available",
-      message: "Review the latest resources added to your study materials section.",
-      category: "General",
-      date: "2026-10-15",
-    },
-    {
-      id: "n4",
-      title: "Mathematics worksheet",
-      message: "Your probability worksheet deadline is 22 October.",
-      category: "Assignments",
-      date: "2026-10-15",
-    },
-  ];
-
-  let readIds = [];
-
-  try {
-    const saved = JSON.parse(localStorage.getItem(storageKey) || "[]");
-    if (Array.isArray(saved)) {
-      readIds = saved.filter(id =>
-        typeof id === "string" &&
-        notifications.some(item => item.id === id)
-      );
-    }
-  } catch {
-    readIds = [];
-  }
-
-  const list = document.getElementById("notification-list");
-  const readFilter = document.getElementById("read-filter");
-  const categoryFilter = document.getElementById("category-filter");
-  const empty = document.getElementById("notifications-empty");
-
-  function saveReadState() {
     try {
-      localStorage.setItem(storageKey, JSON.stringify(readIds));
-    } catch {
-      // The page remains usable if browser storage is unavailable.
+        const saved = JSON.parse(localStorage.getItem(storageKey) || "[]");
+        if (Array.isArray(saved)) readIds = saved.filter(id => typeof id === "string");
+    } catch (error) {
+        console.error("Could not load notification read state.", error);
+        showToast("Notification read states could not be loaded.");
     }
-  }
 
-  function render() {
-    const unread = notifications.filter(item => !readIds.includes(item.id));
-
-    document.getElementById("total-notifications").textContent =
-      notifications.length;
-
-    document.getElementById("unread-notifications").textContent =
-      unread.length;
-
-    document.getElementById("academic-notifications").textContent =
-      notifications.filter(item =>
-        item.category === "Academic" || item.category === "Assignments"
-      ).length;
-
-    document.getElementById("general-notifications").textContent =
-      notifications.filter(item => item.category === "General").length;
-
-    const visible = notifications.filter(item => {
-      const isRead = readIds.includes(item.id);
-
-      const statusMatches =
-        readFilter.value === "all" ||
-        (readFilter.value === "read" && isRead) ||
-        (readFilter.value === "unread" && !isRead);
-
-      const categoryMatches =
-        categoryFilter.value === "all" ||
-        categoryFilter.value === item.category;
-
-      return statusMatches && categoryMatches;
-    });
-
-    list.replaceChildren();
-
-    visible.forEach(item => {
-      const isRead = readIds.includes(item.id);
-
-      const row = document.createElement("article");
-      row.className = "list-item" + (isRead ? "" : " notice-unread");
-
-      const tile = document.createElement("div");
-      tile.className = "icon-tile";
-      tile.textContent = item.category === "Assignments" ? "!" :
-        item.category === "Academic" ? "A" : "i";
-
-      const main = document.createElement("div");
-      main.className = "item-main";
-
-      const title = document.createElement("strong");
-      title.textContent = item.title;
-
-      const message = document.createElement("p");
-      message.textContent = item.message;
-
-      const metadata = document.createElement("p");
-      metadata.style.marginTop = "8px";
-      metadata.textContent =
-        `${item.category} · ${new Intl.DateTimeFormat("en-IN", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-        }).format(new Date(`${item.date}T00:00:00`))}`;
-
-      main.append(title, message, metadata);
-
-      const action = document.createElement("button");
-      action.className = "btn btn-secondary";
-      action.textContent = isRead ? "Read" : "Mark as read";
-      action.disabled = isRead;
-      action.setAttribute(
-        "aria-label",
-        `${isRead ? "Already read" : "Mark as read"}: ${item.title}`
-      );
-
-      action.addEventListener("click", () => {
-        if (!readIds.includes(item.id)) {
-          readIds.push(item.id);
-          saveReadState();
-          render();
+    function loadArray(key) {
+        try {
+            const value = JSON.parse(localStorage.getItem(key) || "[]");
+            return Array.isArray(value) ? value : [];
+        } catch (error) {
+            console.warn(`Could not read ${key} for reminders.`, error);
+            return [];
         }
-      });
+    }
 
-      row.append(tile, main, action);
-      list.append(row);
+    function getNotifications() {
+        const assignments = loadArray("studenthub-assignments")
+            .map((item, index) => {
+                if (!item || item.done || typeof item.due !== "string" || !item.due) return null;
+                return {
+                    id: `assignment-${index}-${item.due}`,
+                    title: item.title || "Assignment deadline",
+                    message: `Due ${formatDate(item.due)}${item.subject ? ` · ${item.subject}` : ""}`,
+                    category: "Assignments",
+                    date: item.due
+                };
+            }).filter(Boolean);
+
+        const tasks = loadArray("studenthub-tasks")
+            .map((item, index) => {
+                if (!item || item.done || typeof item.due !== "string" || !item.due) return null;
+                return {
+                    id: `study-${index}-${item.due}`,
+                    title: item.title || "Study plan task",
+                    message: `Planned for ${formatDate(item.due)}${item.subject ? ` · ${item.subject}` : ""}`,
+                    category: "Study planner",
+                    date: item.due
+                };
+            }).filter(Boolean);
+
+        return [...assignments, ...tasks].sort((a, b) => a.date.localeCompare(b.date));
+    }
+
+    function formatDate(value) {
+        const date = new Date(`${value}T00:00:00`);
+        return Number.isNaN(date.getTime())
+            ? value
+            : date.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
+    }
+
+    function save() {
+        try {
+            localStorage.setItem(storageKey, JSON.stringify(readIds));
+            return true;
+        } catch (error) {
+            console.error("Could not save notification read state.", error);
+            showToast("Could not save notification changes.");
+            return false;
+        }
+    }
+
+    function render() {
+        const notifications = getNotifications();
+        const unreadCount = notifications.filter(item => !readIds.includes(item.id)).length;
+        document.getElementById("total-notifications").textContent = notifications.length;
+        document.getElementById("unread-notifications").textContent = unreadCount;
+
+        const visible = notifications.filter(item => {
+            const isRead = readIds.includes(item.id);
+            return (readFilter.value === "all" ||
+                (readFilter.value === "read" && isRead) ||
+                (readFilter.value === "unread" && !isRead)) &&
+                (categoryFilter.value === "all" || categoryFilter.value === item.category);
+        });
+
+        list.replaceChildren();
+        visible.forEach(item => {
+            const row = document.createElement("article");
+            row.className = `list-item${readIds.includes(item.id) ? "" : " notice-unread"}`;
+            const icon = document.createElement("div");
+            icon.className = "icon-tile";
+            icon.textContent = item.category === "Assignments" ? "A" : "S";
+            const main = document.createElement("div");
+            main.className = "item-main";
+            const heading = document.createElement("strong");
+            heading.textContent = item.title;
+            const message = document.createElement("p");
+            message.textContent = item.message;
+            const meta = document.createElement("p");
+            meta.style.marginTop = "8px";
+            meta.textContent = item.category;
+            main.append(heading, message, meta);
+
+            const action = document.createElement("button");
+            action.type = "button";
+            action.className = "btn btn-secondary";
+            action.textContent = readIds.includes(item.id) ? "Read" : "Mark as read";
+            action.disabled = readIds.includes(item.id);
+            action.dataset.readId = item.id;
+            row.append(icon, main, action);
+            list.append(row);
+        });
+        empty.hidden = notifications.length > 0;
+        if (notifications.length > 0 && !visible.length) {
+            empty.hidden = false;
+            empty.textContent = "No notifications match these filters.";
+        } else {
+            empty.textContent = "No upcoming reminders yet. Add due dates to your assignments or study plan.";
+        }
+    }
+
+    list.addEventListener("click", event => {
+        const button = event.target.closest("[data-read-id]");
+        if (!button) return;
+        const id = button.dataset.readId;
+        if (readIds.includes(id)) return;
+        readIds.push(id);
+        if (!save()) {
+            readIds.pop();
+            return;
+        }
+        render();
     });
 
-    empty.hidden = visible.length !== 0;
-  }
+    readFilter.addEventListener("change", render);
+    categoryFilter.addEventListener("change", render);
+    document.getElementById("mark-all-read").addEventListener("click", () => {
+        const previous = readIds;
+        readIds = [...new Set([...readIds, ...getNotifications().map(item => item.id)])];
+        if (!save()) {
+            readIds = previous;
+            return;
+        }
+        render();
+        showToast("All reminders marked as read");
+    });
 
-  readFilter.addEventListener("change", render);
-  categoryFilter.addEventListener("change", render);
-
-  document.getElementById("mark-all-read").addEventListener("click", () => {
-    readIds = notifications.map(item => item.id);
-    saveReadState();
     render();
-  });
-
-  render();
 });

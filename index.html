@@ -6,7 +6,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#0b1020">
-    <link rel="stylesheet">
     <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <title>StudentHub</title>
@@ -27,6 +26,14 @@
   <header class="topbar">
 
   <div class="topbar-actions">
+    <button
+    class="icon-button mobile-menu"
+    data-mobile-menu
+    type="button"
+    aria-label="Open navigation"
+    aria-expanded="false">
+    ☰
+</button>
     <button
     class="btn btn-ghost"
     id="auth-button"
@@ -65,7 +72,7 @@
                         </h1>
 
                         <p>
-                            Welcome back, Navadeep. Keep track of classes,
+                            Welcome back, <span id="welcome-name">student</span>. Keep track of classes,
                             assignments and your next big academic goal—all
                             from one calm workspace.
                         </p>
@@ -85,13 +92,13 @@
                         <div class="orb">🎓</div>
 
                         <div class="float-card float-one">
-                            <strong>85%</strong>
-                            <span>Attendance average</span>
+                            <strong>Your workspace</strong>
+                            <span>Everything in one place</span>
                         </div>
 
                         <div class="float-card float-two">
-                            <strong>✨ On track</strong>
-                            <span>Your week at a glance</span>
+                            <strong>Ready when you are</strong>
+                            <span>Start with one small step</span>
                         </div>
                     </div>
                 </section>
@@ -103,8 +110,8 @@
                             <span class="stat-icon">▦</span>
                         </div>
 
-                        <div class="stat-value">06</div>
-                        <div class="stat-note">Across this semester</div>
+                        <div class="stat-value" id="dashboard-subject-count">—</div>
+                        <div class="stat-note" id="dashboard-subject-note">Add your subjects to begin</div>
                     </article>
 
                     <article class="stat-card">
@@ -113,14 +120,14 @@
                             <span class="stat-icon">✓</span>
                         </div>
 
-                        <div class="stat-value">85%</div>
+                        <div class="stat-value" id="dashboard-attendance">—</div>
 
                         <div class="progress">
-                            <span data-progress="85"></span>
+                            <span id="dashboard-attendance-progress"></span>
                         </div>
 
                         <div class="stat-note">
-                            10% above the 75% target
+                            <span id="dashboard-attendance-note">Add attendance records to see your average</span>
                         </div>
                     </article>
 
@@ -143,10 +150,10 @@
                             <span class="stat-icon">✦</span>
                         </div>
 
-                        <div class="stat-value">4 days</div>
+                        <div class="stat-value" id="dashboard-focus-time">—</div>
 
                         <div class="stat-note">
-                            A little progress adds up
+                            Focus minutes today
                         </div>
                     </article>
                 </div>
@@ -154,40 +161,11 @@
                 <div class="content-grid">
                     <section class="card">
                         <div class="card-header">
-                            <h2>Coming up next</h2>
+                            <h2>Today's timetable</h2>
                             <a href="timetable.html">Full timetable →</a>
                         </div>
 
-                        <div class="stack">
-                            <div class="list-row">
-                                <span class="list-icon">09</span>
-
-                                <div class="list-main">
-                                    <strong>Data Structures</strong>
-                                    <small>09:00–10:00 · Lecture hall</small>
-                                </div>
-
-                                <span class="pill">Class</span>
-                            </div>
-
-                            <div class="list-row">
-                                <span class="list-icon">11</span>
-
-                                <div class="list-main">
-                                    <strong>Engineering Mathematics</strong>
-                                    <small>11:00–12:00 · Room 204</small>
-                                </div>
-                            </div>
-
-                            <div class="list-row">
-                                <span class="list-icon">14</span>
-
-                                <div class="list-main">
-                                    <strong>AI/ML Laboratory</strong>
-                                    <small>14:00–16:00 · Computer lab</small>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="stack" id="upcoming-classes"></div>
                     </section>
 
                     <section class="card">
@@ -196,40 +174,7 @@
                             <a href="assignments.html">View all →</a>
                         </div>
 
-                        <div class="stack">
-                            <div class="list-row">
-                                <span class="list-icon">DS</span>
-
-                                <div class="list-main">
-                                    <strong>BST practice set</strong>
-                                    <small>Data Structures · 20 Oct</small>
-                                </div>
-
-                                <span class="pill warn">Pending</span>
-                            </div>
-
-                            <div class="list-row">
-                                <span class="list-icon">MA</span>
-
-                                <div class="list-main">
-                                    <strong>Probability worksheet</strong>
-                                    <small>Mathematics · 22 Oct</small>
-                                </div>
-
-                                <span class="pill warn">Pending</span>
-                            </div>
-
-                            <div class="list-row">
-                                <span class="list-icon">AI</span>
-
-                                <div class="list-main">
-                                    <strong>Classification report</strong>
-                                    <small>AI/ML · Submitted</small>
-                                </div>
-
-                                <span class="pill good">Done</span>
-                            </div>
-                        </div>
+                        <div class="stack" id="upcoming-assignments"></div>
                     </section>
 
                     <section class="card">
@@ -238,40 +183,7 @@
                             <a href="subjects.html">Subjects →</a>
                         </div>
 
-                        <div class="stack">
-                            <div class="list-row">
-                                <div class="list-main">
-                                    <strong>Java Programming</strong>
-                                    <small>Course progress · 78%</small>
-
-                                    <div class="progress">
-                                        <span data-progress="78"></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="list-row">
-                                <div class="list-main">
-                                    <strong>Data Structures</strong>
-                                    <small>Course progress · 65%</small>
-
-                                    <div class="progress">
-                                        <span data-progress="65"></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="list-row">
-                                <div class="list-main">
-                                    <strong>Web Development</strong>
-                                    <small>Course progress · 82%</small>
-
-                                    <div class="progress">
-                                        <span data-progress="82"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="stack" id="study-progress"></div>
                     </section>
 
                     <section class="card">
@@ -314,13 +226,21 @@
                             </a>
                         </div>
                     </section>
+
+                    <section class="card">
+                        <div class="card-header">
+                            <h2>Recent announcements</h2>
+                            <a href="announcements.html">View all →</a>
+                        </div>
+                        <p class="empty">No announcement feed is connected yet.</p>
+                    </section>
                 </div>
 
                 
                 <p class="footer-note">
                     StudentHub · Your academic space ·
                     <span data-year></span>
-                    · Demo data is stored in this browser only.
+                    · Personal activity is stored in this browser.
                 </p>
             </main>
 

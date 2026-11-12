@@ -68,12 +68,55 @@
                             learning resources.
                         </p>
                     </div>
+                    <button class="btn btn-primary" id="add-subject" type="button" aria-expanded="false">
+                        + Add subject
+                    </button>
                 </div>
+
+                <p class="notice" id="subjects-sample-note" role="note">
+                    Starter subjects are examples, not your actual enrollment. Remove them and add your own course details.
+                </p>
+
+                <section class="card" id="subject-editor" hidden>
+                    <form id="subject-form" class="form-grid">
+                        <div class="form-field">
+                            <label for="subject-name">Subject name</label>
+                            <input class="field" id="subject-name" name="name" maxlength="80" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="subject-instructor">Instructor (optional)</label>
+                            <input class="field" id="subject-instructor" name="instructor" maxlength="80">
+                        </div>
+                        <div class="form-field">
+                            <label for="subject-credits">Credits (optional)</label>
+                            <input class="field" id="subject-credits" name="credits" type="number" min="0" max="30">
+                        </div>
+                        <div class="form-field">
+                            <label for="subject-progress">Course progress (%)</label>
+                            <input class="field" id="subject-progress" name="progress" type="number" min="0" max="100" value="0" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="subject-type">Type</label>
+                            <select class="select" id="subject-type" name="type">
+                                <option value="core">Core</option>
+                                <option value="elective">Elective</option>
+                            </select>
+                        </div>
+                        <div class="form-field full">
+                            <div class="toolbar">
+                                <button class="btn btn-primary" type="submit">Save subject</button>
+                                <button class="btn btn-secondary" id="cancel-subject" type="button">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
 
                 <div class="toolbar">
                     <input
                         class="field"
                         id="subject-search"
+                        type="search"
+                        aria-label="Search subjects"
                         placeholder="Search subjects..."
                     >
 
@@ -95,7 +138,7 @@
                 <p class="footer-note">
                     StudentHub · Your academic space ·
                     <span data-year></span>
-                    · Demo data is stored in this browser only.
+                    · Subjects are saved in this browser.
                 </p>
             </main>
         </div>
